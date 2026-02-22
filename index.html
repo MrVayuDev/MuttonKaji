@@ -1,0 +1,778 @@
+ <!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MuttonKaji - Congress 0.2: A satirical, fact-based look at Nepali Congress and its promises, controversies, and timeline." />
+  <title>MuttonKaji | Congress 0.2</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Tiro+Devanagari+Nepali&family=Poppins:wght@300&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 Free — replace all emojis with proper icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION BAR
+       Replace logo text and nav links as needed.
+  ============================================================ -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <!-- REPLACE: swap icon or add an <img> tag for a real logo -->
+        <i class="fa-solid fa-ram nav-logo-icon"></i>
+        <span class="logo-text">MuttonKaji</span>
+        <span class="logo-badge">Congress 0.2</span>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero"><i class="fa-solid fa-house"></i> गृह</a></li>
+        <li><a href="#promises"><i class="fa-solid fa-scroll"></i> वाचाहरू</a></li>
+        <li><a href="#kands"><i class="fa-solid fa-fire"></i> काण्डहरू</a></li>
+        <li><a href="#timeline"><i class="fa-solid fa-calendar-days"></i> टाइमलाइन</a></li>
+        <li><a href="#sources"><i class="fa-solid fa-book-open"></i> स्रोतहरू</a></li>
+        <li><a href="#about"><i class="fa-solid fa-circle-info"></i> बारेमा</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO SECTION
+       Replace headline, subtext, and CTA button text.
+  ============================================================ -->
+  <section id="hero">
+    <div class="hero-bg-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="hero-content">
+      <!-- REPLACE: Main satirical tagline -->
+      <div class="hero-chip">
+        <i class="fa-solid fa-flag"></i>
+        नेपाली कांग्रेस • मूल्यांकन
+      </div>
+      <h1 class="hero-title">
+        <span class="highlight">MuttonKaji</span><br />
+        Congress 0.2
+      </h1>
+      <!-- REPLACE: Subtitle / description -->
+      <p class="hero-subtitle">
+        वाचा गर्ने, भुल्ने, फेरि वाचा गर्ने — <strong>नेपाली कांग्रेसको अपग्रेड</strong>।<br />
+        (Fact-based archive of promises made &amp; forgotten.)
+      </p>
+      <div class="hero-actions">
+        <a href="#promises" class="btn btn-primary">
+          <i class="fa-solid fa-arrow-right"></i> वाचाहरू हेर्नुस्
+        </a>
+        <a href="#kands" class="btn btn-secondary">
+          <i class="fa-solid fa-fire"></i> काण्डहरू हेर्नुस्
+        </a>
+      </div>
+      <!-- REPLACE: Update the stat numbers with real data -->
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="stat-num">75+</span>
+          <span class="stat-label">वाचाहरू</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">~3%</span>
+          <span class="stat-label">पूरा भएका</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">12+</span>
+          <span class="stat-label">काण्डहरू</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">∞</span>
+          <span class="stat-label">माफीहरू</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image: save the uploaded image as hero.png in this folder -->
+    <div class="hero-image-wrap">
+      <div class="hero-stacked-text">
+        <span>प्रमाण</span>
+        <span>हराएकाे</span>
+        <span>मान्छे</span>
+      </div>
+      <svg class="hero-dry-tree" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Minimal dry tree path -->
+        <path d="M50 100 C 45 70, 48 50, 50 40 C 40 25, 20 15, 10 5 M50 40 C 60 25, 80 15, 90 5 M48 60 C 35 50, 25 40, 20 30 M52 70 C 65 60, 75 50, 80 40 M42 33 C 35 25, 28 20, 25 15 M58 33 C 65 25, 72 20, 75 15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      </svg>
+      <img src="MuttonKaji.png" alt="प्रमाण हराएकाे मान्छे" class="hero-portrait" />
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROMISES / WACHAS SECTION
+       Each card = one promise. Duplicate .promise-card to add more.
+  ============================================================ -->
+  <section id="promises" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">
+          <i class="fa-solid fa-scroll"></i> वाचाहरू
+        </span>
+        <h2>Promised vs. Delivered</h2>
+        <p class="section-desc">कांग्रेसका मुख्य चुनावी वाचा र तिनको हालत — तथ्यमा आधारित।</p>
+      </div>
+
+      <div class="card-grid">
+
+        <!-- PROMISE CARD 1 — replace content below -->
+        <div class="promise-card" data-status="broken">
+          <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div class="card-status broken">
+            <i class="fa-solid fa-circle-xmark"></i> भुलियो
+          </div>
+          <h3>२४ घण्टे बिजुली</h3>
+          <p class="card-promise">
+            <!-- REPLACE: Exact promise quote -->
+            "हाम्रो सरकारले पाँच वर्षभित्र मुलुकलाई २४ घण्टे बिजुली दिनेछ।"
+          </p>
+          <p class="card-reality">
+            <!-- REPLACE: What actually happened + source -->
+            वर्षौंसम्म लोडसेडिङ जारी रह्यो। ग्रामीण क्षेत्रमा अझै अनियमित आपूर्ति।
+          </p>
+          <!-- REPLACE: Actual source link -->
+          <a href="#sources" class="card-source">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> स्रोत: [थप्नुहोस्]
+          </a>
+        </div>
+
+        <!-- PROMISE CARD 2 -->
+        <div class="promise-card" data-status="partial">
+          <div class="card-icon"><i class="fa-solid fa-hospital"></i></div>
+          <div class="card-status partial">
+            <i class="fa-solid fa-circle-half-stroke"></i> आंशिक
+          </div>
+          <h3>निःशुल्क स्वास्थ्य सेवा</h3>
+          <p class="card-promise">
+            <!-- REPLACE: Exact promise quote -->
+            "सबै नेपालीलाई निःशुल्क र गुणस्तरीय स्वास्थ्य सेवा उपलब्ध गराइनेछ।"
+          </p>
+          <p class="card-reality">
+            <!-- REPLACE: What actually happened -->
+            आधारभूत स्वास्थ्य बीमा योजना आंशिक रूपमा कार्यान्वयन; ठूला अस्पतालमा अझै शुल्क।
+          </p>
+          <a href="#sources" class="card-source">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> स्रोत: [थप्नुहोस्]
+          </a>
+        </div>
+
+        <!-- PROMISE CARD 3 -->
+        <div class="promise-card" data-status="broken">
+          <div class="card-icon"><i class="fa-solid fa-coins"></i></div>
+          <div class="card-status broken">
+            <i class="fa-solid fa-circle-xmark"></i> भुलियो
+          </div>
+          <h3>भ्रष्टाचार शून्य</h3>
+          <p class="card-promise">
+            <!-- REPLACE: Exact promise quote -->
+            "हाम्रो सरकारमा एक रुपैयाँ पनि भ्रष्टाचार हुने छैन।"
+          </p>
+          <p class="card-reality">
+            <!-- REPLACE: What actually happened -->
+            CIAA प्रतिवेदनमा बर्सेनि उच्च भ्रष्टाचार दर दर्ज; सुडान काण्ड, ललिता निवास काण्ड।
+          </p>
+          <a href="#sources" class="card-source">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> स्रोत: [थप्नुहोस्]
+          </a>
+        </div>
+
+        <!-- PROMISE CARD 4 -->
+        <div class="promise-card" data-status="broken">
+          <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="card-status broken">
+            <i class="fa-solid fa-circle-xmark"></i> भुलियो
+          </div>
+          <h3>रोजगारी सिर्जना</h3>
+          <p class="card-promise">
+            <!-- REPLACE: Exact promise quote -->
+            "प्रत्येक वर्ष ५ लाख रोजगारी सिर्जना गरिनेछ।"
+          </p>
+          <p class="card-reality">
+            <!-- REPLACE: What actually happened -->
+            वार्षिक ५ लाखभन्दा बढी युवा वैदेशिक रोजगारीमा जान बाध्य; बेरोजगारी दर उच्च।
+          </p>
+          <a href="#sources" class="card-source">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> स्रोत: [थप्नुहोस्]
+          </a>
+        </div>
+
+        <!-- PROMISE CARD 5 -->
+        <div class="promise-card" data-status="broken">
+          <div class="card-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+          <div class="card-status broken">
+            <i class="fa-solid fa-circle-xmark"></i> भुलियो
+          </div>
+          <h3>किसान राहत</h3>
+          <p class="card-promise">
+            <!-- REPLACE: Exact promise quote -->
+            "किसानलाई उचित मूल्य, मल र बीउको ग्यारेन्टी दिइनेछ।"
+          </p>
+          <p class="card-reality">
+            <!-- REPLACE: What actually happened -->
+            मलको अभाव, उचित मूल्य नपाएर किसानको उत्पादन सडकमा फ्याँकिने घटनाहरू बारम्बार।
+          </p>
+          <a href="#sources" class="card-source">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> स्रोत: [थप्नुहोस्]
+          </a>
+        </div>
+
+        <!-- PROMISE CARD 6 -->
+        <div class="promise-card" data-status="partial">
+          <div class="card-icon"><i class="fa-solid fa-road"></i></div>
+          <div class="card-status partial">
+            <i class="fa-solid fa-circle-half-stroke"></i> आंशिक
+          </div>
+          <h3>पूर्वाधार विकास</h3>
+          <p class="card-promise">
+            <!-- REPLACE: Exact promise quote -->
+            "सबै जिल्लालाई सडक सञ्जालले जोडिनेछ।"
+          </p>
+          <p class="card-reality">
+            <!-- REPLACE: What actually happened -->
+            केही सडक निर्माण भए, तर गुणस्तर खराब र समयमा पूरा नभएका परियोजनाहरू अनगिन्ती।
+          </p>
+          <a href="#sources" class="card-source">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> स्रोत: [थप्नुहोस्]
+          </a>
+        </div>
+
+        <!-- REPLACE: Add more promise cards by duplicating the block above -->
+
+      </div>
+
+      <!-- Filter buttons -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">सबै</button>
+        <button class="filter-btn" data-filter="broken">
+          <i class="fa-solid fa-circle-xmark"></i> भुलियो
+        </button>
+        <button class="filter-btn" data-filter="partial">
+          <i class="fa-solid fa-circle-half-stroke"></i> आंशिक
+        </button>
+        <button class="filter-btn" data-filter="kept">
+          <i class="fa-solid fa-circle-check"></i> पूरा
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       KANDS / CONTROVERSIES SECTION
+       Each kand-card = one controversy. Add more as needed.
+  ============================================================ -->
+  <section id="kands" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">
+          <i class="fa-solid fa-fire"></i> काण्डहरू
+        </span>
+        <h2>Notable Kands</h2>
+        <p class="section-desc">तथ्यमा आधारित, स्रोत सहित — कांग्रेसका उल्लेखनीय विवाद।</p>
+      </div>
+
+      <div class="kand-grid">
+
+        <!-- KAND CARD 1 — replace with real kand details -->
+        <div class="kand-card">
+          <div class="kand-meta">
+            <!-- REPLACE: Year of the controversy -->
+            <span class="kand-year">२०७५</span>
+            <!-- REPLACE: Category tag -->
+            <span class="kand-tag">
+              <i class="fa-solid fa-triangle-exclamation"></i> भ्रष्टाचार
+            </span>
+          </div>
+          <h3 class="kand-title">
+            <i class="fa-solid fa-shield-halved"></i>
+            <!-- REPLACE: Kand name -->
+            सुडान काण्ड
+          </h3>
+          <p class="kand-desc">
+            <!-- REPLACE: Short, factual description with source -->
+            नेपाली शान्ति सेनाका सदस्यहरू मार्फत भ्रष्टाचारको आरोप। संसदीय छानबिन समिति गठन।
+            [थप विवरण र स्रोत थप्नुहोस्]
+          </p>
+          <div class="kand-footer">
+            <!-- REPLACE: Real source URL -->
+            <a href="#sources" class="kand-link">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> स्रोत: [थप्नुहोस्]
+            </a>
+            <span class="kand-severity high">
+              <i class="fa-solid fa-circle-radiation"></i> उच्च
+            </span>
+          </div>
+        </div>
+
+        <!-- KAND CARD 2 -->
+        <div class="kand-card">
+          <div class="kand-meta">
+            <span class="kand-year">२०७७</span>
+            <span class="kand-tag">
+              <i class="fa-solid fa-triangle-exclamation"></i> सम्पत्ति
+            </span>
+          </div>
+          <h3 class="kand-title">
+            <i class="fa-solid fa-landmark"></i>
+            ललिता निवास काण्ड
+          </h3>
+          <p class="kand-desc">
+            <!-- REPLACE: Short, factual description with source -->
+            सरकारी जग्गा अनियमित रूपमा हस्तान्तरणमा पार्टी नेताहरूको संलग्नताको आरोप। CIAA अनुसन्धानमा।
+            [थप विवरण र स्रोत थप्नुहोस्]
+          </p>
+          <div class="kand-footer">
+            <a href="#sources" class="kand-link">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> स्रोत: [थप्नुहोस्]
+            </a>
+            <span class="kand-severity high">
+              <i class="fa-solid fa-circle-radiation"></i> उच्च
+            </span>
+          </div>
+        </div>
+
+        <!-- KAND CARD 3 -->
+        <div class="kand-card">
+          <div class="kand-meta">
+            <span class="kand-year">२०७९</span>
+            <span class="kand-tag">
+              <i class="fa-solid fa-triangle-exclamation"></i> नियुक्ति
+            </span>
+          </div>
+          <h3 class="kand-title">
+            <i class="fa-solid fa-ticket"></i>
+            कोटा नियुक्ति काण्ड
+          </h3>
+          <p class="kand-desc">
+            <!-- REPLACE: Short, factual description with source -->
+            सरकारी पद र राजदूत नियुक्तिमा योग्यताभन्दा पार्टी सम्बन्धलाई प्राथमिकता दिएको आरोप।
+            [थप विवरण र स्रोत थप्नुहोस्]
+          </p>
+          <div class="kand-footer">
+            <a href="#sources" class="kand-link">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> स्रोत: [थप्नुहोस्]
+            </a>
+            <span class="kand-severity medium">
+              <i class="fa-solid fa-circle-exclamation"></i> मध्यम
+            </span>
+          </div>
+        </div>
+
+        <!-- KAND CARD 4 -->
+        <div class="kand-card">
+          <div class="kand-meta">
+            <span class="kand-year">२०८०</span>
+            <span class="kand-tag">
+              <i class="fa-solid fa-triangle-exclamation"></i> आर्थिक
+            </span>
+          </div>
+          <h3 class="kand-title">
+            <i class="fa-solid fa-mobile-screen"></i>
+            एनसेल टैक्स काण्ड
+          </h3>
+          <p class="kand-desc">
+            <!-- REPLACE: Short, factual description with source -->
+            एनसेलको शेयर बिक्रीमा अर्बौं रुपैयाँ राजस्व छली भएको आरोप; पार्टी संलग्नताको प्रश्न।
+            [थप विवरण र स्रोत थप्नुहोस्]
+          </p>
+          <div class="kand-footer">
+            <a href="#sources" class="kand-link">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> स्रोत: [थप्नुहोस्]
+            </a>
+            <span class="kand-severity high">
+              <i class="fa-solid fa-circle-radiation"></i> उच्च
+            </span>
+          </div>
+        </div>
+
+        <!-- REPLACE: Add more kand cards by duplicating a block above -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TIMELINE SECTION
+       Add or remove .timeline-item blocks as needed.
+  ============================================================ -->
+  <section id="timeline" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">
+          <i class="fa-solid fa-calendar-days"></i> टाइमलाइन
+        </span>
+        <h2>Key Actions &amp; Claims</h2>
+        <p class="section-desc">मुख्य घटना र वाचाहरूको कालक्रम।</p>
+      </div>
+
+      <div class="timeline">
+
+        <!-- TIMELINE ITEM — duplicate to add events -->
+        <div class="timeline-item left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <!-- REPLACE: date -->
+            <span class="tl-date">
+              <i class="fa-solid fa-clock"></i> २०७२ — चुनाव
+            </span>
+            <!-- REPLACE: event description -->
+            <h4>महाभूकम्प पछिको पुनर्निर्माण वाचा</h4>
+            <p>भूकम्पपीडितका घर २ वर्षभित्र पुनर्निर्माण गरिने वाचा।
+              <span class="tl-result broken">
+                <i class="fa-solid fa-circle-xmark"></i> वर्षौं ढिलो।
+              </span>
+            </p>
+            <!-- REPLACE: source -->
+            <a href="#sources" class="tl-source">
+              <i class="fa-solid fa-link"></i> स्रोत
+            </a>
+          </div>
+        </div>
+
+        <div class="timeline-item right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="tl-date">
+              <i class="fa-solid fa-clock"></i> २०७४ — चुनाव
+            </span>
+            <h4>समृद्ध नेपाल, सुखी नेपाली</h4>
+            <p>५ वर्षमा नेपाल समृद्धिको बाटोमा आउने दाबी।
+              <span class="tl-result broken">
+                <i class="fa-solid fa-circle-xmark"></i> नतिजा विवादास्पद।
+              </span>
+            </p>
+            <a href="#sources" class="tl-source">
+              <i class="fa-solid fa-link"></i> स्रोत
+            </a>
+          </div>
+        </div>
+
+        <div class="timeline-item left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="tl-date">
+              <i class="fa-solid fa-clock"></i> २०७७
+            </span>
+            <h4>सरकार गठन र पतन</h4>
+            <p>गठबन्धन सरकार गठन।
+              <span class="tl-result partial">
+                <i class="fa-solid fa-circle-half-stroke"></i> अल्पकालीन स्थिरता।
+              </span>
+            </p>
+            <a href="#sources" class="tl-source">
+              <i class="fa-solid fa-link"></i> स्रोत
+            </a>
+          </div>
+        </div>
+
+        <div class="timeline-item right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="tl-date">
+              <i class="fa-solid fa-clock"></i> २०७९ — चुनाव
+            </span>
+            <h4>Congress 2.0 को घोषणा</h4>
+            <p>"नयाँ नेतृत्व, नयाँ कांग्रेस" भन्दै युवा नेतृत्वको दाबी।
+              <span class="tl-result partial">
+                <i class="fa-solid fa-circle-half-stroke"></i> अझै मूल्यांकनमा।
+              </span>
+            </p>
+            <a href="#sources" class="tl-source">
+              <i class="fa-solid fa-link"></i> स्रोत
+            </a>
+          </div>
+        </div>
+
+        <div class="timeline-item left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="tl-date">
+              <i class="fa-solid fa-clock"></i> २०८१
+            </span>
+            <h4>पार्टी विभाजन र पुनर्मिलन</h4>
+            <!-- REPLACE: event description -->
+            <p>आन्तरिक कलह र गुटबन्दी।
+              <span class="tl-result broken">
+                <i class="fa-solid fa-circle-xmark"></i> पार्टी एकता प्रश्नमा।
+              </span>
+            </p>
+            <a href="#sources" class="tl-source">
+              <i class="fa-solid fa-link"></i> स्रोत
+            </a>
+          </div>
+        </div>
+
+        <!-- REPLACE: Add more timeline items as needed -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SCORECARD SECTION — fun meme-style rating
+  ============================================================ -->
+  <section id="scorecard" class="section section-accent">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">
+          <i class="fa-solid fa-chart-bar"></i> स्कोरकार्ड
+        </span>
+        <h2>MuttonKaji Report Card</h2>
+        <p class="section-desc">वस्तुनिष्ठ मूल्यांकन </p>
+      </div>
+      <div class="scorecard-grid">
+        <!-- REPLACE: Update grade and label for each metric -->
+        <div class="score-item">
+          <div class="score-circle grade-f">NG</div>
+          <p class="score-label">वाचा पूर्ति</p>
+        </div>
+        <div class="score-item">
+          <div class="score-circle grade-f">NG</div>
+          <p class="score-label">पारदर्शिता</p>
+        </div>
+        <div class="score-item">
+          <div class="score-circle grade-f">NG</div>
+          <p class="score-label">पूर्वाधार</p>
+        </div>
+        <div class="score-item">
+          <div class="score-circle grade-f">NG</div>
+          <p class="score-label">भ्रष्टाचार नियन्त्रण</p>
+        </div>
+        <div class="score-item">
+          <div class="score-circle grade-a">A+</div>
+          <p class="score-label">माफी माग्ने क्षमता</p>
+        </div>
+        <div class="score-item">
+          <div class="score-circle grade-a">A+</div>
+          <p class="score-label">भाषण कला</p>
+        </div>
+      </div>
+      <p class="scorecard-disclaimer">
+        <i class="fa-solid fa-circle-info"></i>
+        तथ्यहरू स्रोत खण्डमा हेर्नुहोस्।
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SOURCES & REFERENCES SECTION
+       Replace placeholder links with real sources.
+  ============================================================ -->
+  <section id="sources" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">
+          <i class="fa-solid fa-book-open"></i> स्रोतहरू
+        </span>
+        <h2>Sources &amp; References</h2>
+        <p class="section-desc">यहाँका सबै तथ्य सार्वजनिक स्रोतमा आधारित छन्।</p>
+      </div>
+
+      <div class="sources-grid">
+        <div class="source-card">
+          <span class="source-num">01</span>
+          <div class="source-body">
+            <h4><!-- REPLACE: Source title --> CIAA वार्षिक प्रतिवेदन</h4>
+            <p><!-- REPLACE: Description --> वार्षिक भ्रष्टाचार अनुसन्धान तथ्याङ्क।</p>
+            <!-- REPLACE: href with actual URL -->
+            <a href="https://ciaa.gov.np" target="_blank" rel="noopener">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> ciaa.gov.np
+            </a>
+          </div>
+        </div>
+
+        <div class="source-card">
+          <span class="source-num">02</span>
+          <div class="source-body">
+            <h4>संसद सचिवालय</h4>
+            <p>संसदीय कार्यवाही र प्रतिवेदनहरू।</p>
+            <a href="https://www.parliament.gov.np" target="_blank" rel="noopener">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> parliament.gov.np
+            </a>
+          </div>
+        </div>
+
+        <div class="source-card">
+          <span class="source-num">03</span>
+          <div class="source-body">
+            <!-- REPLACE: Source title, description, and URL -->
+            <h4>कान्तिपुर / Kantipur</h4>
+            <p>समाचार रिपोर्टहरू र सम्पादकीय।</p>
+            <a href="https://www.ekantipur.com" target="_blank" rel="noopener">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> ekantipur.com
+            </a>
+          </div>
+        </div>
+
+        <div class="source-card">
+          <span class="source-num">04</span>
+          <div class="source-body">
+            <!-- REPLACE: Source title, description, and URL -->
+            <h4>रातोपाटी</h4>
+            <p>अनुसन्धानात्मक पत्रकारिता।</p>
+            <a href="https://www.ratopati.com" target="_blank" rel="noopener">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> ratopati.com
+            </a>
+          </div>
+        </div>
+
+        <div class="source-card">
+          <span class="source-num">05</span>
+          <div class="source-body">
+            <!-- REPLACE: Source title, description, and URL -->
+            <h4>नेपाल कांग्रेस घोषणापत्र</h4>
+            <p>आधिकारिक चुनावी घोषणापत्रहरू।</p>
+            <a href="https://www.nepalicongress.org" target="_blank" rel="noopener">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> nepalicongress.org
+            </a>
+          </div>
+        </div>
+
+        <div class="source-card">
+          <span class="source-num">06</span>
+          <div class="source-body">
+            <!-- REPLACE: Source title, description, and URL -->
+            <h4>[थप्नुहोस् — स्रोत ६]</h4>
+            <p>[विवरण थप्नुहोस्]</p>
+            <a href="#">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> लिंक थप्नुहोस्
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="disclaimer-box">
+        <p>
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <strong>Disclaimer:</strong> यो वेबसाइट हाल निर्माण चरणमा छ।
+          यहाँका सबै दाबी सार्वजनिक रूपमा उपलब्ध स्रोतहरूमा आधारित छन्।
+          यसले कुनै पनि व्यक्ति वा दलको विरुद्ध व्यक्तिगत आरोप लगाउने उद्देश्य राख्दैन।
+          <!-- REPLACE: Add your full disclaimer here -->
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT / CONTACT SECTION
+       Replace contact details and social links.
+  ============================================================ -->
+  <section id="about" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">
+          <i class="fa-solid fa-comments"></i> बारेमा
+        </span>
+        <h2>About MuttonKaji</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <h3>यो के हो?</h3>
+          <!-- REPLACE: Your about text -->
+          <p>
+            <strong>MuttonKaji (Congress 0.2)</strong> तथ्यमा आधारित अभिलेख हो
+            जसले नेपाली कांग्रेसका वाचा, काण्ड, र निर्णयहरू सार्वजनिक स्रोतको आधारमा प्रस्तुत गर्छ।
+          </p>
+          <p>
+            <!-- REPLACE: Mission statement -->
+            हाम्रो उद्देश्य: जवाफदेहिता, पारदर्शिता, र सूचित नागरिकको निर्माण।
+            "मटनकाजी" — बोल्दिन्छौं, भुल्दैनौं।
+          </p>
+          <div class="about-tags">
+            <span class="tag"><i class="fa-solid fa-masks-theater"></i> व्यंग्य</span>
+            <span class="tag"><i class="fa-solid fa-magnifying-glass"></i> तथ्यमा आधारित</span>
+            <span class="tag"><i class="fa-solid fa-scale-balanced"></i> नागरिक जवाफदेहिता</span>
+            <span class="tag"><i class="fa-solid fa-hashtag"></i> Congress02</span>
+          </div>
+        </div>
+
+        <div class="about-contact">
+          <h3>सम्पर्क / Contact</h3>
+          <!-- REPLACE: Your real contact details and social media links -->
+          <div class="contact-links">
+            <a href="mailto:hello@youremail.com" class="contact-item">
+              <i class="fa-solid fa-envelope"></i>
+              <span>hello@youremail.com</span>
+            </a>
+            <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener" class="contact-item">
+              <i class="fa-brands fa-x-twitter"></i>
+              <span>@yourhandle</span>
+            </a>
+            <a href="https://facebook.com/yourpage" target="_blank" rel="noopener" class="contact-item">
+              <i class="fa-brands fa-facebook"></i>
+              <span>Facebook Page</span>
+            </a>
+            <!-- REPLACE: Add Instagram, TikTok, or other socials as needed -->
+            <a href="#" class="contact-item">
+              <i class="fa-brands fa-instagram"></i>
+              <span>Instagram</span>
+            </a>
+          </div>
+          <div class="contribute-box">
+            <!-- REPLACE: Instructions for contributors -->
+            <p>
+              <i class="fa-solid fa-code-pull-request"></i>
+              <strong>Contribute:</strong> तथ्य, स्रोत, वा काण्ड थप्न चाहनुहुन्छ? इमेल गर्नुहोस् वा GitHub PR पठाउनुहोस्।
+            </p>
+            <!-- REPLACE: GitHub link -->
+            <a href="https://github.com/yourrepo" target="_blank" rel="noopener" class="btn btn-outline">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       Replace footer text and links as needed.
+  ============================================================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <i class="fa-solid fa-ram footer-logo-icon"></i>
+        MuttonKaji &nbsp;|&nbsp; Congress 0.2
+      </div>
+      <p class="footer-copy">
+        <!-- REPLACE: Year and your name/org -->
+        &copy; 2082 BS MuttonKaji Contributors 
+      </p>
+      <div class="footer-links">
+        <a href="#promises"><i class="fa-solid fa-scroll"></i> वाचाहरू</a>
+        <a href="#kands"><i class="fa-solid fa-fire"></i> काण्डहरू</a>
+        <a href="#timeline"><i class="fa-solid fa-calendar-days"></i> टाइमलाइन</a>
+        <a href="#sources"><i class="fa-solid fa-book-open"></i> स्रोत</a>
+        <a href="#about"><i class="fa-solid fa-circle-info"></i> बारेमा</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       AUDIO PLAYER (Background Music)
+  ============================================================ -->
+  <audio id="bg-music" loop autoplay preload="auto">
+    <source src="Goat_Song.mp3" type="audio/mpeg">
+  </audio>
+
+  <button id="music-toggle" class="floating-music-btn" aria-label="Toggle Music">
+    <i class="fa-solid fa-volume-xmark"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
