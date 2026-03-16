@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>विजयकुमार गच्छदार — Accountability Report | MuttonKaji</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0d0a;
+    --paper: #f5f0e8;
+    --cream: #ede8dc;
+    --red: #c0392b;
+    --red-dark: #962d22;
+    --gold: #b8860b;
+    --gray: #6b6255;
+    --light-gray: #d4cec3;
+    --accent-line: #c0392b;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  .masthead {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 12px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    border-bottom: 3px solid var(--red);
+  }
+
+  .masthead span { color: var(--light-gray); }
+  .masthead strong { color: #e8e0d0; }
+
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: repeating-linear-gradient(90deg, var(--red) 0, var(--red) 40px, transparent 40px, transparent 50px);
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--red);
+    display: inline-block;
+    border: 1px solid var(--red);
+    padding: 4px 12px;
+    margin-bottom: 28px;
+    animation: fadeSlide 0.6s ease both;
+  }
+
+  .hero-title-nepali {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 80px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: #f0ebe0;
+    animation: fadeSlide 0.7s 0.1s ease both;
+    opacity: 0;
+  }
+
+  .hero-title-en {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(14px, 2.2vw, 20px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--light-gray);
+    margin-top: 10px;
+    animation: fadeSlide 0.7s 0.2s ease both;
+    opacity: 0;
+  }
+
+  .hero-rule {
+    width: 80px;
+    height: 2px;
+    background: var(--red);
+    margin: 28px 0;
+    animation: fadeSlide 0.7s 0.3s ease both;
+    opacity: 0;
+  }
+
+  .hero-deck {
+    font-size: clamp(15px, 2vw, 19px);
+    font-weight: 300;
+    line-height: 1.65;
+    color: #c8c0b0;
+    max-width: 700px;
+    animation: fadeSlide 0.7s 0.4s ease both;
+    opacity: 0;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    animation: fadeSlide 0.7s 0.5s ease both;
+    opacity: 0;
+  }
+
+  .hero-meta-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+  .hero-meta-item strong { color: var(--light-gray); display: block; font-size: 13px; letter-spacing: 0.05em; }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .container {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .profile-bar {
+    background: var(--cream);
+    border-left: 6px solid var(--red);
+    margin: 48px auto 0;
+    max-width: 940px;
+    padding: 28px 36px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+    animation: fadeSlide 0.6s 0.6s ease both;
+    opacity: 0;
+  }
+
+  .profile-stat label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gray);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .profile-stat value {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    display: block;
+    line-height: 1.35;
+  }
+
+  .content {
+    padding: 60px 0;
+  }
+
+  .section {
+    margin-bottom: 70px;
+    animation: fadeSlide 0.5s ease both;
+  }
+
+  .section-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--ink);
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .prose p {
+    margin-bottom: 20px;
+    font-size: 17px;
+    color: #1a1610;
+    line-height: 1.8;
+  }
+
+  .prose strong { color: var(--ink); font-weight: 600; }
+  .prose em { font-style: italic; color: var(--gray); }
+
+  .pullquote {
+    border-left: 4px solid var(--red);
+    margin: 36px 0;
+    padding: 20px 28px;
+    background: var(--cream);
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--ink);
+    position: relative;
+  }
+
+  .pullquote::before {
+    content: '\201C';
+    font-size: 72px;
+    color: var(--red);
+    opacity: 0.18;
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    line-height: 1;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .pullquote cite {
+    display: block;
+    margin-top: 12px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  .scandal-box {
+    border: 1px solid var(--light-gray);
+    border-top: 4px solid var(--red);
+    padding: 28px 32px;
+    margin: 32px 0;
+    background: #fff;
+    box-shadow: 4px 4px 0 var(--cream);
+  }
+
+  .scandal-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+
+  .scandal-box h3 span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--red);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 36px 0;
+    font-size: 15px;
+  }
+
+  .summary-table th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 16px;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .summary-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--light-gray);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  .summary-table tr:nth-child(even) td { background: var(--cream); }
+  .summary-table tr:hover td { background: #ede5d5; transition: background 0.2s; }
+
+  .badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-weight: 700;
+  }
+  .badge-red { background: #fde8e6; color: var(--red-dark); border: 1px solid #f5c0ba; }
+  .badge-amber { background: #fef9e7; color: #7d6b00; border: 1px solid #f0d060; }
+  .badge-gray { background: #f0ece5; color: var(--gray); border: 1px solid var(--light-gray); }
+
+  .timeline {
+    position: relative;
+    padding-left: 36px;
+    margin: 32px 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--red), var(--light-gray));
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 28px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -32px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--red);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 2px var(--red);
+  }
+
+  .timeline-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .timeline-text {
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  .sources-section {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 50px 0 60px;
+    margin-top: 60px;
+  }
+
+  .sources-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #333;
+    color: var(--paper);
+  }
+
+  .sources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .source-item {
+    border: 1px solid #2a2820;
+    padding: 16px 20px;
+    background: #1a1710;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .source-item:hover {
+    background: #232018;
+    border-color: var(--red);
+  }
+
+  .source-item a {
+    color: #c8c0b0;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.5;
+    display: block;
+    font-family: 'Source Serif 4', serif;
+  }
+
+  .source-item a:hover { color: #e8d8b0; text-decoration: underline; }
+
+  .source-outlet {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  footer {
+    background: #0a0906;
+    color: #4a4438;
+    text-align: center;
+    padding: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+  }
+
+  .rule {
+    border: none;
+    border-top: 1px solid var(--light-gray);
+    margin: 48px 0;
+    position: relative;
+  }
+
+  .rule::before {
+    content: '◆';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--paper);
+    padding: 0 12px;
+    color: var(--red);
+    font-size: 10px;
+  }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 2px;
+    margin: 32px 0;
+  }
+
+  .stat-card {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 22px 20px;
+    text-align: center;
+  }
+
+  .stat-card .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--red);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-card .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--light-gray);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 40px 20px 36px; }
+    .profile-bar { padding: 20px; }
+    .prose p { font-size: 16px; }
+    .scandal-box { padding: 20px; }
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<nav class="subpage-nav">
+  <a href="index.html" class="subpage-logo">
+    <i class="fa-solid fa-ram"></i> MuttonKaji <span style="font-size:0.7rem;font-weight:400;color:#888;margin-left:4px;">Congress 0.2</span>
+  </a>
+  <ul class="subpage-nav-links">
+    <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+    <li><a href="index.html#politicians"><i class="fa-solid fa-user-tie"></i> All Politicians</a></li>
+    <li><a href="deuba-genz-accountability.html">Deuba</a></li>
+    <li><a href="arzu-rana-deuba.html">Arzu</a></li>
+    <li><a href="gachhadar-report.html" class="active">Gachhadar</a></li>
+    <li><a href="gagan-thapa-expose.html">Gagan Thapa</a></li>
+  </ul>
+</nav>
+
+<div style="padding: 1rem 5%; border-bottom: 1px solid rgba(255,255,255,0.07);">
+  <a href="index.html#politicians" class="back-breadcrumb"><i class="fa-solid fa-arrow-left"></i> All Politicians</a>
+</div>
+
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Corruption · Acquittal · Impunity · Power</div>
+    <h1 class="hero-title-nepali">विजयकुमार गच्छदार</h1>
+    <div class="hero-title-en">Bijay Kumar Gachhadar — Acquitted by Special Court. CIAA Now Appealing to the Supreme Court.</div>
+    <div class="hero-rule"></div>
+    <p class="hero-deck">
+      A veteran of six parliamentary terms and five stints as Deputy Prime Minister, Bijay Kumar Gachhadar was charged with Rs 96.57 million in corruption for his role in the Lalita Niwas land scam — one of Nepal's largest corruption cases. In February 2024, the Special Court <strong style="color: var(--red);">acquitted him</strong>, citing his actions were "policy decisions." The CIAA, rejecting the verdict, appealed to the Supreme Court in March 2025. The case exposes how political power in Nepal shields the powerful from accountability.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>Born</strong> February 1, 1954</div>
+      <div class="hero-meta-item"><strong>Party</strong> Nepali Congress (formerly MJF, MJF-D)</div>
+      <div class="hero-meta-item"><strong>Constituency</strong> Sunsari-3 (Lost seat 2022)</div>
+      <div class="hero-meta-item"><strong>Status</strong> <span style="color:var(--red);">Acquitted (Feb 2024) — CIAA SC Appeal Pending</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="profile-bar container">
+  <div class="profile-stat">
+    <label>Parliamentary Terms</label>
+    <value>6 (1991–2017)</value>
+  </div>
+  <div class="profile-stat">
+    <label>Deputy PM Stints</label>
+    <value>5 Times</value>
+  </div>
+  <div class="profile-stat">
+    <label>Ministerial Portfolios</label>
+    <value>13 Times</value>
+  </div>
+  <div class="profile-stat">
+    <label>Original CIAA Charge</label>
+    <value>Rs 96.57 Million</value>
+  </div>
+  <div class="profile-stat">
+    <label>Special Court Verdict</label>
+    <value style="color: var(--red);">Acquitted — Feb 15, 2024</value>
+  </div>
+  <div class="profile-stat">
+    <label>Current Status</label>
+    <value style="color: var(--red);">CIAA SC Appeal — Mar 2025</value>
+  </div>
+</div>
+
+<div class="container">
+  <div class="content">
+
+    <section class="section reveal">
+      <div class="section-number">Section 01</div>
+      <h2 class="section-title">Background &amp; Political Profile</h2>
+      <div class="prose">
+        <p>
+          Bijay Kumar Gachhadar is a veteran Nepali politician who first won a parliamentary seat in 1991 and held it through six consecutive elections — 1991, 1994, 1999, 2008, 2013, and 2017 — representing Sunsari-3. Over three decades, he served as Deputy Prime Minister under governments led by Madhav Kumar Nepal, Baburam Bhattarai, KP Sharma Oli, Pushpa Kamal Dahal, and Sher Bahadur Deuba. He held ministerial portfolios across Home Affairs, Physical Infrastructure, Water Resources, and Information and Communications a total of 13 times.
+        </p>
+        <p>
+          He was a senior figure within the Nepali Congress (NC) before breaking away to join — and later fracture — the Madhesi Janadhikar Forum (MJF) during the Madhesi rights movement. His career has been defined not just by political longevity, but by persistent allegations of opportunism, corruption, and the exploitation of institutional power for personal gain.
+        </p>
+        <p>
+          In 2022, Gachhadar lost his parliamentary seat for the first time in over 30 years, defeated in Sunsari-3 by CPN-UML's Bhagwati Chaudhary by more than 5,000 votes — an electoral consequence that many observers linked to the corruption charges that had hounded him since 2020.
+        </p>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <div class="stat-row reveal">
+      <div class="stat-card">
+        <span class="num">175</span>
+        <span class="lbl">Total Accused in Lalita Niwas Scam</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">136</span>
+        <span class="lbl">Ropani of Govt. Land Illegally Transferred</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">Rs 96.5M</span>
+        <span class="lbl">Charges Against Gachhadar</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">1 Year</span>
+        <span class="lbl">Absconding from Court Summons</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">8–10 Yrs</span>
+        <span class="lbl">Jail Term Sought by CIAA</span>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <section class="section reveal">
+      <div class="section-number">Section 02 — Primary Scandal</div>
+      <h2 class="section-title">The Lalita Niwas / Baluwatar Land Scam</h2>
+      <div class="prose">
+        <p>
+          This is the most serious criminal and legal matter against Gachhadar, and one of the largest corruption cases in Nepal's post-2006 history.
+        </p>
+
+        <div class="scandal-box">
+          <h3><span>Case Background</span>What Happened</h3>
+          <p style="font-size:16px; line-height:1.75;">
+            In 2010, Gachhadar served as Deputy Prime Minister and Minister for Physical Infrastructure in the Madhav Kumar Nepal government. His ministry submitted proposals to the Cabinet recommending that government land plots at Baluwatar — near the Prime Minister's residence at Lalita Niwas — be registered in the names of dozens of individuals, many of them alleged fake tenants, ostensibly to expand the PM's residence.
+          </p>
+          <p style="font-size:16px; line-height:1.75; margin-top: 14px;">
+            Critics and investigators noted that decisions on land reform and tenant classification should have gone through the Land Reforms Ministry — not the Physical Infrastructure Ministry — making Gachhadar's ministry's role jurisdictionally improper from the outset. The scheme resulted in 136 ropanis of government land being illegally registered in private citizens' names.
+          </p>
+        </div>
+
+        <div class="pullquote">
+          "I have not personally harmed the Nepal government by taking advantage. I only submitted the proposal of the ministry to the Council of Ministers."
+          <cite>— Bijay Kumar Gachhadar, Press Conference after CIAA indictment</cite>
+        </div>
+
+        <p>
+          The scandal was uncovered by a government-appointed investigation committee headed by former secretary Sharada Prasad Trital, whose report triggered the Commission for Investigation of Abuse of Authority (CIAA) to launch formal proceedings in early 2019.
+        </p>
+
+        <p>
+          <strong>On February 5, 2020,</strong> the CIAA filed corruption cases against 175 individuals at Nepal's Special Court, including former ministers, businessmen, middlemen, and land beneficiaries. The case is among the most expansive corruption prosecutions in Nepal's modern history.
+        </p>
+
+        <div class="scandal-box">
+          <h3><span>Charges Against Gachhadar Specifically</span>Financial &amp; Criminal Demands</h3>
+          <p style="font-size:16px; line-height:1.75;">
+            The CIAA demanded that Gachhadar pay <strong>Rs 96.5 million (approximately NPR 9.65 crore)</strong> — representing the alleged loss to the state — and serve a <strong>jail sentence of eight to ten years</strong>. This placed him among the more seriously charged political figures in the case.
+          </p>
+          <p style="font-size:16px; line-height:1.75; margin-top: 14px;">
+            For comparison, former middlemen Ram Kumar Subedi faced the highest charges of Rs 525 million, and businessman Min Bahadur Gurung (owner of Bhatbhateni Supermarket) faced Rs 500 million. Gachhadar's co-accused former minister Dambar Shrestha faced identical charges of Rs 96.57 million.
+          </p>
+        </div>
+
+        <p>
+          As a sitting Member of Parliament at the time, Gachhadar was automatically <strong>suspended from the House of Representatives</strong> upon the filing of the corruption case — as mandated by Nepal's Corruption Prevention Act of 2002.
+        </p>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <section class="section reveal">
+      <div class="section-number">Section 03 — Court Conduct</div>
+      <h2 class="section-title">Absconding from Justice: Defying Court Summons</h2>
+      <div class="prose">
+        <p>
+          In March 2020, the Special Court issued a summons requiring Gachhadar to appear within 15 days. He failed to comply. For approximately one full year following the issuance of summons, he remained absent from legal proceedings and was formally categorized as <strong>"absconding"</strong> — a classification reserved for defendants who evade judicial process.
+        </p>
+        <p>
+          He finally appeared before the Special Court only after a significant political development: the day after his party leader, Sher Bahadur Deuba, was sworn in as Prime Minister in July 2021. The politically calculated timing of his appearance — coinciding with a change in government to one led by a figure sympathetic to him — raised immediate questions about whether he was using political connections to shield himself from prosecution.
+        </p>
+
+        <div class="pullquote">
+          Gachhadar's appearance at court — timed one day after Deuba became Prime Minister — was widely interpreted as a calculated political maneuver to appear under a friendly government umbrella.
+          <cite>— Media Analysis, Nepali Press, July 2021</cite>
+        </div>
+
+        <p>
+          The Special Court released him on a bail of <strong>Rs 1 million</strong> — one of the highest bail amounts set among the 175 defendants in the Lalita Niwas case.
+        </p>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <section class="section reveal">
+      <div class="section-number">Section 04 — Political Treachery</div>
+      <h2 class="section-title">Splitting the Madhesi Movement: The MJF Betrayal</h2>
+      <div class="prose">
+        <p>
+          Following the People's Movement of 2006, Gachhadar left the Nepali Congress to join the Madhesi Janadhikar Forum (MJF), a political formation fighting for the rights, proportional representation, and federalist inclusion of the Madhesi people of Nepal's Terai region. His tenure within the MJF, however, is remembered in the Madhesi community as one of calculated destruction.
+        </p>
+        <p>
+          Observers and internal party members accused Gachhadar of <strong>unilaterally deciding to back the UML-NC combine</strong> against the MJF's official position, bargaining a ministerial portfolio for himself in exchange. He was accused of distributing money to win legislators to his side and using political contacts to pressure the Prime Minister to include him in cabinet against his own party's official stance.
+        </p>
+
+        <div class="scandal-box">
+          <h3><span>Institutional Damage</span>Formal Party Split</h3>
+          <p style="font-size:16px; line-height:1.75;">
+            Gachhadar ultimately registered a breakaway faction — <strong>Madhesi Janadhikar Forum-Nepal (MJF-N)</strong> — at the Election Commission, officially splitting what had been the fourth-largest party in the Constituent Assembly. MJF-Democratic members who later resigned accused Gachhadar and other leaders of "cheating the Madhesi people." His actions were widely seen as permanently weakening the Madhesi political bloc at a critical moment in Nepal's constitution-writing process.
+          </p>
+        </div>
+
+        <p>
+          He was also <strong>formally expelled from the original Nepali Congress in March 2008</strong>, having already abandoned the party to join the Peoples' Rights Forum. His subsequent return to Nepali Congress — after fracturing the MJF — completed a full circle of party-switching that critics described as driven entirely by personal political calculation.
+        </p>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <section class="section reveal">
+      <div class="section-number">Section 05 — Institutional Failure</div>
+      <h2 class="section-title">Selective Prosecution: The Big Fish that Swam Free</h2>
+      <div class="prose">
+        <p>
+          The CIAA's conduct in the Lalita Niwas case itself drew sharp criticism from civil society. Despite the illegal land transfers taking place during the tenures of Prime Ministers <strong>Madhav Kumar Nepal</strong> and <strong>Baburam Bhattarai</strong>, neither was indicted. The CIAA concluded that their decisions were "collective policy decisions of the Cabinet" and cited a Supreme Court ruling to justify not prosecuting them.
+        </p>
+        <p>
+          <strong>Khem Raj Regmi, President of Transparency International Nepal</strong>, publicly criticized this disparity, arguing that those who took the fundamental decision to illegally transfer land were left untouched, while those who implemented lower-level steps — like Gachhadar — faced prosecution. This criticism cuts both ways: it raises questions both about the selective nature of Nepal's anti-corruption mechanism and about whether Gachhadar used the relative fairness argument to deflect from his own documented culpability.
+        </p>
+
+        <div class="pullquote">
+          Those who actually decided to transfer the land illegally were spared prosecution, while implementers faced the full weight of the law.
+          <cite>— Khem Raj Regmi, President, Transparency International Nepal</cite>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <section class="section reveal">
+      <div class="section-number">Section 06</div>
+      <h2 class="section-title">Chronology of Key Events</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1991–2017</div>
+          <div class="timeline-text">Elected to Parliament six consecutive times from Sunsari-3; served as Deputy Prime Minister five times across different governments.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2008 — March</div>
+          <div class="timeline-text">Formally expelled from Nepali Congress after joining the Madhesi Janadhikar Forum.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2009–2010</div>
+          <div class="timeline-text">Accused of orchestrating split within MJF for personal ministerial gain; later registers breakaway MJF-Nepal party at the Election Commission.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2010</div>
+          <div class="timeline-text">As Deputy PM and Minister of Physical Infrastructure, submits proposals to Cabinet that result in 136 ropani of Baluwatar government land being illegally transferred to private individuals.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2019 — Early</div>
+          <div class="timeline-text">CIAA launches formal investigation based on the Trital Committee Report into the Lalita Niwas land fraud.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2020 — February 5</div>
+          <div class="timeline-text">CIAA files corruption cases against 175 individuals at the Special Court, including Gachhadar. He is charged with Rs 96.57 million and faces 8–10 years imprisonment. Suspended from Parliament.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2020 — March</div>
+          <div class="timeline-text">Special Court issues summons; Gachhadar fails to appear, categorized as "absconding" for approximately one year.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2021 — July</div>
+          <div class="timeline-text">Appears at Special Court one day after Sher Bahadur Deuba (his party leader) is sworn in as Prime Minister. Released on Rs 1 million bail.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2022 — Elections</div>
+          <div class="timeline-text">Defeated in Sunsari-3 by CPN-UML's Bhagwati Chaudhary by more than 5,000 votes — ending a 31-year streak of parliamentary victories.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2024–2026</div>
+          <div class="timeline-text">Corruption case remains on trial at Nepal's Special Court; no final verdict as of the date of this report.</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <section class="section reveal">
+      <div class="section-number">Section 07</div>
+      <h2 class="section-title">Summary of Scandals &amp; Legal Status</h2>
+      <div style="overflow-x:auto;">
+        <table class="summary-table">
+          <thead>
+            <tr>
+              <th>Scandal / Issue</th>
+              <th>Details</th>
+              <th>Status (as of Feb 2026)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Lalita Niwas Land Scam</strong><br><em style="font-size:13px;color:#888;">CIAA Corruption Case → Special Court → Supreme Court</em></td>
+              <td>Illegal transfer of 136 ropani of government land; Rs 96.57 million charged. Special Court <strong>acquitted</strong> Gachhadar on Feb 15, 2024 citing "policy decisions." CIAA appealed the acquittal to the Supreme Court on March 5, 2025.</td>
+              <td><span class="badge badge-red">SC Appeal Pending</span></td>
+            </tr>
+            <tr>
+              <td><strong>Special Court Acquittal</strong><br><em style="font-size:13px;color:#888;">Feb 15, 2024</em></td>
+              <td>Court acquitted Gachhadar alongside former ministers Sanjay Kumar Shah, Dambar Bahadur Shrestha, and Chandradev Joshi. Rationale: ministerial decisions deemed "policy decisions" outside CIAA purview. Over 100 others convicted — but not the politicians who ordered it.</td>
+              <td><span class="badge badge-amber">Acquitted (Contested)</span></td>
+            </tr>
+            <tr>
+              <td><strong>Absconding from Court</strong><br><em style="font-size:13px;color:#888;">Obstruction of Justice</em></td>
+              <td>Refused to appear for ~1 year after court summons; formally categorized as "absconding." Appeared July 2021 — one day after his party leader Deuba became PM.</td>
+              <td><span class="badge badge-amber">Appeared 2021</span></td>
+            </tr>
+            <tr>
+              <td><strong>MJF Party Split</strong><br><em style="font-size:13px;color:#888;">Political Betrayal</em></td>
+              <td>Broke MJF for personal ministerial gain; fractured 4th-largest Constituent Assembly party. MJF-D members accused him of "cheating the Madhesi people."</td>
+              <td><span class="badge badge-gray">Documented Record</span></td>
+            </tr>
+            <tr>
+              <td><strong>Parliament Suspension</strong><br><em style="font-size:13px;color:#888;">Corruption Prevention Act 2002</em></td>
+              <td>Automatically suspended as Member of the House of Representatives upon CIAA filing in 2020. Lost his parliamentary seat in 2022 election.</td>
+              <td><span class="badge badge-amber">Seat Lost — 2022</span></td>
+            </tr>
+            <tr>
+              <td><strong>Opportunistic Party-Switching</strong><br><em style="font-size:13px;color:#888;">NC → MJF → MJF-D → MJF-N → NC</em></td>
+              <td>Multiple party registrations over career, consistently aligned with power rather than principle. Returned to NC after fracturing the Madhesi movement.</td>
+              <td><span class="badge badge-gray">Documented Record</span></td>
+            </tr>
+            <tr>
+              <td><strong>Jurisdictional Overreach</strong><br><em style="font-size:13px;color:#888;">Ministry Conduct</em></td>
+              <td>Physical Infrastructure Ministry submitted land reform proposals properly belonging to Land Reforms Ministry — the central charge the Special Court dismissed as "policy."</td>
+              <td><span class="badge badge-red">Basis of SC Appeal</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <section class="section reveal">
+      <div class="section-number">Section 08 — The Acquittal &amp; What It Reveals</div>
+      <h2 class="section-title">Acquitted: How Nepal's Political Class Escapes Accountability</h2>
+      <div class="prose">
+        <p>
+          On <strong>February 15, 2024</strong>, Nepal's Special Court acquitted Bijay Kumar Gachhadar — along with former ministers Sanjay Kumar Shah, Dambar Bahadur Shrestha, and Chandradev Joshi — in the Lalita Niwas land scam. The court's reasoning: their actions constituted <em>"policy decisions"</em> made in their ministerial capacities, placing them outside the CIAA's investigative purview.
+        </p>
+
+        <div class="scandal-box">
+          <h3><span>The "Policy Decision" Escape Hatch</span>Why the Acquittal Is Itself the Scandal</h3>
+          <p style="font-size:16px; line-height:1.75;">
+            The Special Court's logic — that ministers who formally submitted proposals that resulted in 136 ropani of government land being fraudulently transferred cannot be held criminally liable because they were acting in a "policy capacity" — amounts to a near-blanket immunity for political leaders. Over 100 businessmen, middlemen, bureaucrats, and fake tenants were convicted. The people who ordered and enabled the scheme at the top walked free.
+          </p>
+          <p style="font-size:16px; line-height:1.75; margin-top: 14px;">
+            Khem Raj Regmi of Transparency International Nepal had already noted this pattern when the case was filed: those who actually decided to transfer the land illegally were left untouched, while implementers faced the full weight of the law. The Special Court's verdict made this impunity <em>legally official</em>.
+          </p>
+        </div>
+
+        <div class="pullquote">
+          Those who actually decided to transfer the land illegally were spared prosecution, while implementers faced the full weight of the law.
+          <cite>— Khem Raj Regmi, President, Transparency International Nepal — vindicated by the acquittal</cite>
+        </div>
+
+        <p>
+          The CIAA refused to accept this outcome. On <strong>March 5, 2025</strong>, it filed a formal appeal with the Supreme Court, arguing the Special Court's verdict was flawed and failed to adequately analyze the evidence presented. The appeal seeks to overturn the acquittals of Gachhadar and the other ministers. As of February 2026, the Supreme Court has not issued a ruling. The final legal outcome remains pending.
+        </p>
+
+        <p>
+          What cannot be appealed — and what the court's verdict cannot erase — is the documented factual record: Gachhadar's ministry submitted the proposal. The Cabinet approved it. 136 ropani of government land was illegally registered in private names. Hundreds of millions of rupees of state property was lost. The politicians who made it happen were acquitted. The pattern is not unique to Gachhadar — it has defined Nepali political accountability for decades. The Lalita Niwas case, even in its acquittal phase, is a textbook illustration of why the Gen-Z generation eventually took to the streets.
+        </p>
+
+        <div class="scandal-box">
+          <h3><span>Key Conviction vs. Acquittal Split</span>Who Was Punished, Who Was Not</h3>
+          <p style="font-size:16px; line-height:1.75;">
+            <strong>Convicted:</strong> Ram Kumar Subedi (middleman, Rs 525M charges), Min Bahadur Gurung (Bhatbhateni owner, Rs 500M), former secretaries Chhabi Raj Pant and Dip Basnyat — bureaucrats and businessmen who executed the fraud.
+          </p>
+          <p style="font-size:16px; line-height:1.75; margin-top: 14px;">
+            <strong>Acquitted:</strong> Bijay Kumar Gachhadar (Minister who submitted the Cabinet proposal), Sanjay Kumar Shah (State Minister), Dambar Bahadur Shrestha (Land Reforms Minister), Chandradev Joshi (Land Reforms Minister) — the politicians at the top of the chain of command.
+          </p>
+          <p style="font-size:16px; line-height:1.75; margin-top: 14px;">
+            The court also ordered confiscation and return of illegally transferred land from 65 individuals. The land exists. The fraud is proven. The political architects are free.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<section class="sources-section">
+  <div class="container">
+    <h2 class="sources-title">Sources &amp; References</h2>
+    <div class="sources-grid">
+
+      <div class="source-item">
+        <span class="source-outlet">The Kathmandu Post</span>
+        <a href="https://kathmandupost.com/national/2020/02/05/three-former-ministers-among-175-individuals-indicted-over-lalita-niwas-scam" target="_blank" rel="noopener">Three former ministers among 175 individuals indicted over Lalita Niwas scam (Feb 5, 2020)</a>
+      </div>
+
+      <div class="source-item">
+        <span class="source-outlet">The Kathmandu Post</span>
+        <a href="https://kathmandupost.com/national/2021/07/14/bijaya-kumar-gachhadar-an-accused-in-baluawtar-land-scam-released-on-rs1-million-bail" target="_blank" rel="noopener">Bijaya Kumar Gachhadar, accused in Baluwatar land scam, released on Rs 1 million bail (Jul 2021)</a>
+      </div>
+
+      <div class="source-item">
+        <span class="source-outlet">OnlineKhabar English</span>
+        <a href="https://english.onlinekhabar.com/baluwatar-land-scam-bijaya-gachhadar-says-framed.html" target="_blank" rel="noopener">Baluwatar land scam: Bijaya Gachhadar says he was framed</a>
+      </div>
+
+      <div class="source-item">
+        <span class="source-outlet">OnlineKhabar English</span>
+        <a href="https://english.onlinekhabar.com/ciaa-nepal-anti-corruption-body-leaves-big-fish-aside.html" target="_blank" rel="noopener">CIAA: Nepal's anti-corruption body leaves big fish aside — TI Nepal criticism</a>
+      </div>
+
+      <div class="source-item">
+        <span class="source-outlet">The Himalayan Times</span>
+        <a href="https://thehimalayantimes.com/kathmandu/gachhadar-posts-million-rupee-bail" target="_blank" rel="noopener">Gachhadar posts million-rupee bail</a>
+      </div>
+
+      <div class="source-item">
+        <span class="source-outlet">HimalPress</span>
+        <a href="https://en.himalpress.com/end-of-parliamentary-politics-spanning-three-decades/" target="_blank" rel="noopener">End of Parliamentary Politics Spanning Three Decades — 2022 Election Defeat</a>
+      </div>
+
+      <div class="source-item">
+        <span class="source-outlet">Nepal News (English)</span>
+        <a href="https://english.nepalnews.com/s/nation/gachhadar-who-has-been-implicated-in-lalita-niwas-scam-appears-at-court/" target="_blank" rel="noopener">Gachhadar, implicated in Lalita Niwas scam, appears at court</a>
+      </div>
+
+      <div class="source-item">
+        <span class="source-outlet">Nepali Janta</span>
+        <a href="https://nepalijanta.com/eng/article/3201.html" target="_blank" rel="noopener">Gachhadar press conference — "False case filed by KP Oli government"</a>
+      </div>
+
+      <div class="source-item">
+        <span class="source-outlet">Democracy for Nepal</span>
+        <a href="https://www.democracyfornepal.com/2009/06/implications-of-split-in-mjf.html" target="_blank" rel="noopener">Implications of Split in MJF (2009 Analysis)</a>
+      </div>
+
+      <div class="source-item">
+        <span class="source-outlet">Wikipedia</span>
+        <a href="https://en.wikipedia.org/wiki/Bijay_Kumar_Gachhadar" target="_blank" rel="noopener">Bijay Kumar Gachhadar — Political biography and career record</a>
+      </div>
+
+      <div class="source-item">
+        <span class="source-outlet">Transparency International Nepal</span>
+        <a href="https://www.tinepal.org" target="_blank" rel="noopener">Transparency International Nepal — Statements on Lalita Niwas selective prosecution</a>
+      </div>
+
+      <div class="source-item">
+        <span class="source-outlet">CIAA Nepal</span>
+        <a href="https://www.ciaa.gov.np" target="_blank" rel="noopener">Commission for Investigation of Abuse of Authority — Official case filings</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Report compiled from public records, court filings &amp; verified media sources &nbsp;|&nbsp; February 2026 &nbsp;|&nbsp; For informational and research purposes</div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+
+<nav class="subpage-footer">
+  <span><i class="fa-solid fa-ram"></i> <a href="index.html">MuttonKaji | Congress 0.2</a> &copy; 2082 BS MuttonKaji Contributors</span>
+  <span>Sources: Kathmandu Post &middot; Nepali Times &middot; Wikipedia &middot; South Asia Check &middot; OnlineKhabar</span>
+  <span>
+    <a href="deuba-genz-accountability.html">Deuba</a> &middot;
+    <a href="arzu-rana-deuba.html">Arzu</a> &middot;
+    <a href="gachhadar-report.html">Gachhadar</a> &middot;
+    <a href="gagan-thapa-expose.html">Gagan Thapa</a>
+  </span>
+</nav>
+
+</body>
+</html>

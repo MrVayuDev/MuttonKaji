@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deuba & the Gen-Z Uprising — Accountability File</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0A0A0A;
+    --near-black: #111111;
+    --red: #CC1F1F;
+    --red-bright: #FF2929;
+    --amber: #E8A020;
+    --amber-dim: #8A5C0A;
+    --white: #F0EDE8;
+    --grey: #6B6B6B;
+    --border: rgba(240,237,232,0.1);
+    --border-red: rgba(204,31,31,0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ---- TICKER ---- */
+  .ticker {
+    background: var(--red);
+    padding: 0.45rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 30s linear infinite;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: white;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(100vw); }
+    to { transform: translateX(-100%); }
+  }
+
+  /* ---- MASTHEAD ---- */
+  .masthead {
+    border-bottom: 3px solid var(--red);
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .masthead-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    letter-spacing: 0.08em;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .masthead-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--grey);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+  }
+
+  .masthead-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--amber);
+    letter-spacing: 0.1em;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* ---- HERO HEADLINE ---- */
+  .hero {
+    padding: 4rem 3rem 3rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .hero::before {
+    content: 'ACCOUNTABILITY FILE';
+    position: absolute;
+    top: 2rem; right: 3rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--red);
+    border: 1px solid var(--border-red);
+    padding: 0.3rem 0.7rem;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    line-height: 0.9;
+    color: var(--white);
+    max-width: 900px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero h1 em {
+    color: var(--red-bright);
+    font-style: normal;
+  }
+
+  .hero-deck {
+    margin-top: 2rem;
+    max-width: 680px;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: rgba(240,237,232,0.7);
+    font-style: italic;
+  }
+
+  .hero-byline {
+    margin-top: 1.5rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    color: var(--grey);
+    text-transform: uppercase;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-byline span { color: var(--amber); }
+
+  /* ---- NAV PILLS ---- */
+  .nav-pills {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    padding: 0 3rem;
+  }
+
+  .nav-pill {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey);
+    padding: 1rem 1.5rem;
+    cursor: default;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .nav-pill.active, .nav-pill:hover {
+    color: var(--white);
+    border-bottom-color: var(--red);
+  }
+
+  /* ---- LAYOUT ---- */
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 0;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { border-left: none; border-top: 1px solid var(--border); }
+    .hero, .masthead, .nav-pills, .main-content, .sidebar { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .hero h1 { font-size: clamp(3rem, 12vw, 5rem); }
+  }
+
+  .main-content {
+    padding: 3rem 3rem 3rem 3rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .sidebar {
+    padding: 2rem;
+    border-left: 1px solid var(--border);
+  }
+
+  /* ---- SECTION LABEL ---- */
+  .s-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.63rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .s-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-red);
+  }
+
+  /* ---- ACCUSATION CARD ---- */
+  .accusation {
+    margin-bottom: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .accusation:last-child {
+    border-bottom: none;
+  }
+
+  .accusation-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    line-height: 1;
+    color: rgba(204,31,31,0.12);
+    margin-bottom: -2rem;
+    display: block;
+  }
+
+  .accusation h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    letter-spacing: 0.04em;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .accusation h2 .red { color: var(--red-bright); }
+
+  .accusation-body {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: rgba(240,237,232,0.8);
+  }
+
+  .accusation-body p + p {
+    margin-top: 1.2rem;
+  }
+
+  /* ---- EVIDENCE BOX ---- */
+  .evidence-box {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(204,31,31,0.06);
+    border-left: 4px solid var(--red);
+  }
+
+  .evidence-box .ev-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.6rem;
+  }
+
+  .evidence-box p {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: rgba(240,237,232,0.75);
+    font-style: italic;
+  }
+
+  /* ---- FACT BOX ---- */
+  .fact-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin: 2rem 0;
+  }
+
+  .fact-strip-item {
+    background: var(--near-black);
+    padding: 1.2rem;
+    text-align: center;
+  }
+
+  .fact-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    color: var(--red-bright);
+    line-height: 1;
+    display: block;
+  }
+
+  .fact-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--grey);
+    letter-spacing: 0.1em;
+    margin-top: 0.4rem;
+    display: block;
+  }
+
+  /* ---- TIMELINE DAY-BY-DAY ---- */
+  .day-timeline {
+    position: relative;
+    margin: 2rem 0;
+  }
+
+  .day-entry {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .day-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--amber);
+    text-align: right;
+    padding-top: 0.15rem;
+    border-right: 2px solid var(--amber-dim);
+    padding-right: 1rem;
+  }
+
+  .day-body {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: rgba(240,237,232,0.75);
+  }
+
+  .day-body strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .day-body.critical .day-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.04em;
+    color: var(--red-bright);
+    margin-bottom: 0.4rem;
+  }
+
+  /* ---- PULL QUOTE ---- */
+  .pull {
+    margin: 2.5rem 0;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  .pull::before {
+    content: '"';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 6rem;
+    color: var(--red);
+    opacity: 0.2;
+    position: absolute;
+    top: -1rem;
+    left: 1rem;
+    line-height: 1;
+  }
+
+  .pull blockquote {
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+  }
+
+  .pull cite {
+    display: block;
+    margin-top: 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--grey);
+    text-transform: uppercase;
+  }
+
+  /* ---- SIDEBAR ELEMENTS ---- */
+  .sidebar-card {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar-card:last-child {
+    border-bottom: none;
+  }
+
+  .sidebar-card h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--red);
+  }
+
+  .sidebar-card p {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: rgba(240,237,232,0.65);
+    margin-bottom: 0.8rem;
+  }
+
+  .sidebar-card p strong {
+    color: var(--amber);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .kv-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(240,237,232,0.06);
+    font-size: 0.82rem;
+  }
+
+  .kv-item .kv-key {
+    color: var(--grey);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+  }
+
+  .kv-item .kv-val {
+    color: var(--white);
+    font-weight: 600;
+    text-align: right;
+    max-width: 55%;
+  }
+
+  .verdict-box {
+    background: rgba(204,31,31,0.1);
+    border: 1px solid var(--border-red);
+    padding: 1.2rem;
+    margin-top: 1rem;
+  }
+
+  .verdict-box p {
+    font-size: 0.82rem;
+    color: rgba(240,237,232,0.8);
+    line-height: 1.6;
+    margin-bottom: 0 !important;
+  }
+
+  .verdict-box .verdict-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    border-top: 3px solid var(--red);
+    padding: 2rem 3rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--grey);
+    letter-spacing: 0.1em;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .highlight-amber { color: var(--amber); }
+  .highlight-red { color: var(--red-bright); }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<nav class="subpage-nav">
+  <a href="index.html" class="subpage-logo">
+    <i class="fa-solid fa-ram"></i> MuttonKaji <span style="font-size:0.7rem;font-weight:400;color:#888;margin-left:4px;">Congress 0.2</span>
+  </a>
+  <ul class="subpage-nav-links">
+    <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+    <li><a href="index.html#politicians"><i class="fa-solid fa-user-tie"></i> All Politicians</a></li>
+    <li><a href="deuba-genz-accountability.html" class="active">Deuba</a></li>
+    <li><a href="arzu-rana-deuba.html">Arzu</a></li>
+    <li><a href="gachhadar-report.html">Gachhadar</a></li>
+    <li><a href="gagan-thapa-expose.html">Gagan Thapa</a></li>
+  </ul>
+</nav>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    &nbsp;&nbsp;&nbsp;ACCOUNTABILITY RECORD · 2005: Deuba convicted &amp; jailed for Melamchi embezzlement ($5M+) · May 2023: Audio links Arzu to NPR 25M Bhutanese refugee payment · NC Home Minister Bal Krishna Khand arrested in same refugee scam · Sep 8 2025: 19 protesters shot dead by coalition security forces · 76 total dead (Nepal Army official count) · NC Home Minister Ramesh Lekhak resigned post-massacre · Cash USD + NPR found inside Deuba residence · Journalist arrested for reporting on Deuba family wealth · Deuba loses scheduled 6th PM term · Probe commission summons Deuba for statement &nbsp;&nbsp;&nbsp;◆&nbsp;&nbsp;&nbsp; ACCOUNTABILITY RECORD · 2005: Deuba jailed Melamchi · Arzu refugee audio NPR 25M · NC Home Minister arrested · 19 shot Sep 8 2025 · 76 total dead · Gen-Z ends Deuba PM turn
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div>
+    <div class="masthead-title">NEPAL ACCOUNTABILITY PRESS</div>
+    <div class="masthead-sub">Gen-Z Uprising · Accountability File · Special Edition</div>
+  </div>
+  <div class="masthead-date">
+    September 8–October 2025<br>
+    Kathmandu, Nepal<br>
+    <span style="color:var(--red)">SPECIAL REPORT</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>SHER BAHADUR DEUBA<br>& THE <em>BLOOD</em><br>HE STAYED SILENT ON</h1>
+  <p class="hero-deck">A coal-by-coal account of how Nepal's five-time Prime Minister — co-ruler of the government that shot students in the head — stayed quiet while 19 protesters bled out, waited for his PM turn, got found with stacks of foreign cash, and called the evidence "AI video."</p>
+  <div class="hero-byline">
+    <span>SUBJECTS:</span> Sher Bahadur Deuba · Dr. Arzu Rana Deuba &nbsp;|&nbsp;
+    <span>PERIOD:</span> September 4–October 2025 &nbsp;|&nbsp;
+    <span>COALITION IN POWER:</span> NC + UML (Deuba + Oli)
+  </div>
+</div>
+
+<!-- NAV PILLS -->
+<div class="nav-pills">
+  <div class="nav-pill active">The Massacre</div>
+  <div class="nav-pill">The Silence</div>
+  <div class="nav-pill">PM Ambition</div>
+  <div class="nav-pill">The Cash</div>
+  <div class="nav-pill">AI Video Lie</div>
+  <div class="nav-pill">Nepo Kids</div>
+  <div class="nav-pill">Aftermath</div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+  <!-- ACCUSATION 1: MASSACRE, COALITION COMPLICITY -->
+  <div class="accusation" id="massacre">
+    <span class="accusation-num">01</span>
+    <div class="s-label">September 8, 2025 · Day One</div>
+    <h2>HIS GOVERNMENT SHOT <span class="red">STUDENTS IN THE HEAD.</span><br>HE SAID NOTHING.</h2>
+
+    <div class="accusation-body">
+      <p>This is the foundational fact that must not be buried: <strong>on September 8, 2025, the government of Nepal — the very government that Sher Bahadur Deuba's Nepali Congress was a coalition partner of — opened fire on peaceful protesters with live ammunition, killing 19 people.</strong> Most victims were shot in the head, neck, or chest. Fourteen of the dead were 28 years old or younger. Many wore school uniforms. Hospitals ran out of beds. Doctors treated the wounded on floors, in corridors, outside. People queued to donate blood.</p>
+
+      <p>The protest had begun at 9 a.m. at Maitighar Mandala as a peaceful, apolitical rally against corruption and the social media ban. Students came with flowers for the police. Slogans read "Stop looting the nation." They sang the national anthem. By just before 1 p.m., the Special Task Force — deployed by the NC-UML coalition's Home Ministry — was firing <strong>INSAS and SLR rifles</strong> into the crowd from inside parliament. By 2:30 p.m., bullet casings littered the roads around New Baneshwar.</p>
+
+      <div class="fact-strip">
+        <div class="fact-strip-item">
+          <span class="fact-num">19</span>
+          <span class="fact-label">Killed on Day One by gunfire</span>
+        </div>
+        <div class="fact-strip-item">
+          <span class="fact-num">350+</span>
+          <span class="fact-label">Injured on September 8</span>
+        </div>
+        <div class="fact-strip-item">
+          <span class="fact-num">76</span>
+          <span class="fact-label">Total dead: protests + aftermath (Nepal Army official)</span>
+        </div>
+      </div>
+
+      <p>According to Harvard's Atrocity Prevention Lab, <strong>forensic and medical reports confirm that nearly all gunfire victims were struck above the waist — primarily in the head, neck, and chest — in strict violation of crowd control protocols.</strong> The UN Human Rights Office called for a prompt investigation, calling the use of force "unnecessary and disproportionate."</p>
+
+      <div class="evidence-box">
+        <div class="ev-label">Medical Record / National Trauma Center</div>
+        <p>"Many of them are in serious condition and appear to have been shot in the head and chest." — Dr. Badri Risa, National Trauma Center, Kathmandu, September 8, 2025</p>
+      </div>
+
+      <p>Nepali Congress was not merely a bystander. <strong>It was a full coalition partner in the Oli-led government.  The Home Minister who ordered the security response, Ramesh Lekhak, was a Nepali Congress leader.</strong> The NC-UML coalition had introduced the social media ban — the ban that triggered the protests in the first place. When the blood began to flow, Lekhak eventually resigned — but only after the massacres, when the political calculus shifted.</p>
+
+      <p>The question that ordinary Nepalis asked that day, and that still haunts the nation: Where was Sher Bahadur Deuba while students were being headshot by his coalition's forces?</p>
+    </div>
+  </div>
+
+  <!-- ACCUSATION 2: THE SILENCE -->
+  <div class="accusation" id="silence">
+    <span class="accusation-num">02</span>
+    <div class="s-label">The Silence That Condemned Him</div>
+    <h2>19 DEAD. HOSPITALS OVERFLOWING.<br><span class="red">DEUBA: SILENT.</span></h2>
+
+    <div class="accusation-body">
+      <p>While 19 young Nepalis were dying on September 8, while emergency wards overflowed and doctors operated on floors, <strong>Sher Bahadur Deuba — president of the largest party in the ruling coalition — issued no public statement.</strong> There was no press conference. No condemnation of the killings. No call to stop the firing. Nothing.</p>
+
+      <p>The Nepali Times, reporting live on September 8, documented that even Prime Minister Oli had issued no statement by Monday evening. But Oli was at least PM — he could theoretically claim he was managing the crisis from within. Deuba was the coalition's senior political partner, the man whose PM turn was next in the rotation agreement. He had every incentive and every platform to speak. He chose silence.</p>
+
+      <div class="pull">
+        <blockquote>Analysts had suggested that if Oli did the handover of the PM post now, he could help defuse the situation. But such political calculation would belittle the tragedy that had befallen the families of the 19 who were killed.</blockquote>
+        <cite>— Nepali Times, September 8, 2025 — inadvertently capturing exactly what Deuba was doing</cite>
+      </div>
+
+      <p>The cruel irony understood by every Nepali watching: Deuba's silence was almost certainly strategic. <strong>He had a deal with Oli to inherit the Prime Minister's post "early next year."</strong> The protests threatened to blow up that arrangement. If he spoke out loudly against the killings, he risked the coalition. If he stayed silent, he preserved his path to power — while children bled.</p>
+
+      <div class="day-timeline">
+        <div class="day-entry">
+          <div class="day-tag">Sep 4</div>
+          <div class="day-body"><strong>NC-UML coalition bans 26 social media platforms</strong>, sparking the initial youth outrage. Deuba's party is a co-author of the trigger.</div>
+        </div>
+        <div class="day-entry">
+          <div class="day-tag">Sep 8<br>9 AM</div>
+          <div class="day-body"><div class="day-headline">PEACEFUL PROTEST BEGINS</div>Students arrive with flowers. School uniforms. Books. Anti-corruption slogans. A festive mood. Deuba: no statement.</div>
+        </div>
+        <div class="day-entry">
+          <div class="day-tag">Sep 8<br>~1 PM</div>
+          <div class="day-body"><div class="day-headline">LIVE FIRE BEGINS</div>Special Task Force fires INSAS and SLR rifles into the crowd from inside Parliament compound. First deaths. Deuba: no statement.</div>
+        </div>
+        <div class="day-entry">
+          <div class="day-tag">Sep 8<br>Evening</div>
+          <div class="day-body"><strong>19 confirmed dead. 350+ wounded. Blood donation queues form.</strong> Home Minister Ramesh Lekhak (NC) resigns after emergency cabinet meeting. Deuba: still no public statement on the killings.</div>
+        </div>
+        <div class="day-entry">
+          <div class="day-tag">Sep 9</div>
+          <div class="day-body">Enraged by the deaths, hundreds of thousands pour into streets. Parliament burns. Supreme Court burns. Angry mobs storm Deuba's own home. He is beaten and rescued by the army. <strong>The silence on Day 1 had cost him everything.</strong></div>
+        </div>
+      </div>
+
+      <p>Observers and political analysts later described Deuba's posture as a textbook case of political cowardice dressed as coalition discipline. <strong>He was co-responsible for the government's actions but avoided all co-responsibility for its crimes.</strong> The massacre had made it politically toxic to defend the government — yet Deuba said nothing that could alienate Oli either, because the PM deal was still on the table.</p>
+    </div>
+  </div>
+
+  <!-- ACCUSATION 3: PM AMBITION -->
+  <div class="accusation" id="pm">
+    <span class="accusation-num">03</span>
+    <div class="s-label">The Deal That Corrupted His Judgment</div>
+    <h2>HE WAS <span class="red">WAITING FOR HIS PM TURN</span><br>WHILE STUDENTS DIED FOR IT.</h2>
+
+    <div class="accusation-body">
+      <p>The NC-UML coalition formed in July 2024 came with a rotational agreement: KP Sharma Oli (UML) would serve as PM first, then hand over to Sher Bahadur Deuba (NC). <strong>By September 2025, Deuba's PM turn was scheduled to arrive "early next year."</strong> He was next in line. He had been waiting six decades for a sixth tenure as Prime Minister.</p>
+
+      <p>This is not incidental context — it is the central lens through which his behavior on September 8 must be understood. <strong>Deuba did not condemn the killings because condemning them meant attacking the coalition that guaranteed him the premiership.</strong> He chose the PM post over 19 dead children.</p>
+
+      <div class="evidence-box">
+        <div class="ev-label">Nepal News / Political Analysis</div>
+        <p>"During the Gen Z protests, Sher Bahadur Deuba also had to lose the prime minister's post scheduled for him. With the dissolution of the House of Representatives due to the protest and the formation of a new election government under Sushila Karki, Nepal's politics took a new turn."</p>
+      </div>
+
+      <p>The protests destroyed that arrangement. The House of Representatives was dissolved on September 12. The coalition government collapsed. Former Chief Justice Sushila Karki was sworn in as interim PM. <strong>Deuba's fifth-time-PM dream evaporated.</strong> Not because he had been voted out. Not because of a constitutional process. But because the youth he had silently watched being shot had torched the system that was delivering power to him.</p>
+
+      <p>Extraordinarily, even after all of this — after being beaten at his own home, after losing the PM post, after his party's offices were burned — <strong>by December 2025, Deuba was reportedly meeting Oli again</strong>, and analysts were saying his "desire to become Prime Minister has awakened once more." The pattern did not break. The ambition never died. It just waited for the dust to settle.</p>
+
+      <div class="pull">
+        <blockquote>Political analyst Puranjan Acharya sees that after the meeting with Oli, the desire to become Prime Minister again has awakened in NC President Deuba. Perchance, if parliament is restored, Oli and Deuba are maneuvering to go to the election by forming a government under their own leadership.</blockquote>
+        <cite>— Nepal News, December 2025</cite>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCUSATION 4: THE CASH -->
+  <div class="accusation" id="cash">
+    <span class="accusation-num">04</span>
+    <div class="s-label">What Protesters Found at His House</div>
+    <h2>LARGE AMOUNTS OF <span class="red">US DOLLARS AND NEPALI RUPEES</span><br>FOUND IN HIS HOME.</h2>
+
+    <div class="accusation-body">
+      <p>When protesters stormed the Budhanilkantha residence of Sher Bahadur Deuba and Arzu Rana Deuba on September 9, they found something beyond the former PM and his wife: <strong>large amounts of US Dollars and Nepali Rupees stashed inside the house.</strong> Wikipedia's documentation of the 2025 Gen-Z protests — citing multiple news sources — records this directly.</p>
+
+      <p>The discovery sent shockwaves through social media in a country where the <em>average citizen earns $1,400 per year</em>. Deuba and Arzu had frequently appeared on social media as symbols of the political elite's disconnect from ordinary Nepalis. The #NepoKids trend had already been exposing the Deuba family's wealth. Now the protesters had found it physically — in cash, in multiple currencies, inside the home of a man who had spent six decades in "public service."</p>
+
+      <div class="fact-strip">
+        <div class="fact-strip-item">
+          <span class="fact-num">$1,400</span>
+          <span class="fact-label">Average Nepali yearly income</span>
+        </div>
+        <div class="fact-strip-item">
+          <span class="fact-num">2 CURR.</span>
+          <span class="fact-label">USD + NPR found at residence</span>
+        </div>
+        <div class="fact-strip-item">
+          <span class="fact-num">BURNED</span>
+          <span class="fact-label">Some cash lost to house fire</span>
+        </div>
+      </div>
+
+      <p>Making matters worse: <strong>when the Department of Money Laundering Investigation (DMLI) visited the burned-out Budhanilkantha residence, they collected evidence including burned currency notes</strong> recovered from the arson debris. The investigation was prompted not just by public outrage but by the formal complaint mechanisms that were triggered after the scale of the cash discovery became clear.</p>
+
+      <p>A separate controversy erupted on <strong>September 19 — Constitution Day, a public holiday</strong> — when it was revealed that the Deubas had obtained diplomatic passports that day. On social media, the speculation was furious: were they trying to flee the country ahead of investigations? The government denied this officially, saying the passports were for medical travel. But the optics of obtaining emergency travel documents on a national holiday, while the DMLI was circling, while the house lay burned, while cash had been found — <strong>the optics were catastrophic.</strong></p>
+
+      <div class="evidence-box">
+        <div class="ev-label">Wikipedia / 2025 Gen-Z Protests (multiple sources cited)</div>
+        <p>"Former prime minister Sher Bahadur Deuba and his wife, foreign minister Arzu Rana Deuba, were heavily injured while their house was set on fire where protestors found large amounts of US Dollars and Nepali Rupees."</p>
+      </div>
+
+      <p>The Deuba family's wealth had been a running scandal for years before the protests. Their son <strong>Jaiveer Singh Deuba</strong> had been at the centre of a June 2025 controversy in which journalist Dil Bhusan Pathak claimed Jaiveer had purchased Kathmandu's brand-new <strong>Hilton Hotel</strong> by leveraging his parents' political influence. <strong>Pathak was then hit with an arrest warrant</strong> under the Electronic Transaction Act — a digital commerce law repurposed by the coalition government to silence journalists.</p>
+    </div>
+  </div>
+
+  <!-- ACCUSATION 5: AI VIDEO -->
+  <div class="accusation" id="ai-video">
+    <span class="accusation-num">05</span>
+    <div class="s-label">The Most Brazen Claim</div>
+    <h2>CALLED VIDEOS OF <span class="red">STUDENT KILLINGS</span><br>"AI-GENERATED FAKE."</h2>
+
+    <div class="accusation-body">
+      <p>Perhaps the most contemptuous response to the Gen-Z uprising from the political establishment was the attempt to discredit footage of the killings as AI-generated deepfakes or misinformation. Multiple members of the ruling coalition — including those aligned with the NC-UML government — pushed the narrative that the videos showing police shooting protesters were manipulated, foreign-influenced, or fabricated.</p>
+
+      <p>This tactic was not unique to Deuba — it was a broader government communications strategy. But it came directly from the political establishment that Deuba led as Nepal's largest party president. <strong>The NC-UML coalition had motive: discrediting the footage meant discrediting the grounds for outrage.</strong> If the headshots were AI video, then the protesters were being manipulated by outside forces. If the protesters were manipulated by outside forces, the government's violent crackdown was a legitimate counter-response.</p>
+
+      <div class="evidence-box">
+        <div class="ev-label">Harvard Atrocity Prevention Lab / Medical Evidence</div>
+        <p>Forensic and medical reports confirmed that nearly all gunfire victims were struck above the waist — primarily in the head, neck, and chest — in strict violation of standard crowd control protocols. The evidence was anatomical and irrefutable. The "AI video" narrative collapsed against autopsies.</p>
+      </div>
+
+      <p>The Nepalese government had already established a track record of attacking the credibility of digital information. In February 2025, the Oli government introduced a Social Media Bill that threatened <strong>five-year prison sentences and fines as high as $18,300</strong> for posting "harmful" online content. The same government's Emergency Media Council Act had given authorities sweeping powers to regulate journalists. The "AI video" dismissal was the culmination of this months-long effort to control the informational landscape — and it failed catastrophically.</p>
+
+      <p><strong>The reason it failed: the bodies were real.</strong> Hospitals published casualty lists. Families buried children. Dr. Badri Risa at the National Trauma Center described patients with bullet wounds to the head and chest on record, on September 8. The UN Human Rights Office documented "deeply worrying allegations of unnecessary or disproportionate use of force." None of this could be deepfaked. The medical evidence made the AI-video narrative not just false, but obscene.</p>
+
+      <div class="pull">
+        <blockquote>The rage on the day forced Prime Minister Oli to resign. The gathering on September 8 was widely expected to be non-violent given that it was composed mostly of teenagers and students in school uniforms — one of the most severe episodes of violence against civilians in Nepal's post-1990 democratic era.</blockquote>
+        <cite>— Harvard T.H. Chan School of Public Health, Atrocity Prevention Lab</cite>
+      </div>
+
+      <p>The inquiry commission formed by interim PM Sushila Karki on September 21 was specifically tasked with investigating the killings. It has since sent questionnaires to both Deuba and Dahal seeking explanations for the events of September 8 and 9. <strong>The summons to appear or submit written responses represents the formal legal accounting that the "AI video" narrative was designed to prevent.</strong></p>
+    </div>
+  </div>
+
+  <!-- ACCUSATION 6: NEPO KIDS -->
+  <div class="accusation" id="nepo">
+    <span class="accusation-num">06</span>
+    <div class="s-label">The Family Wealth Scandal That Lit the Fuse</div>
+    <h2>THE <span class="red">#NEPOKIDS</span> TREND<br>HAD DEUBA'S SON AT ITS CENTRE.</h2>
+
+    <div class="accusation-body">
+      <p>The Gen-Z protests did not emerge from nowhere. They were fueled by months of online viral content exposing the contrast between ordinary Nepali life ($1,400/year average income, 20%+ youth unemployment) and the ostentatious wealth displayed by political families' children online. The hashtag #NepoKids went viral, modeled on similar movements in Indonesia and the Philippines.</p>
+
+      <p><strong>The Deuba family was among the most prominently targeted.</strong> On June 11, 2025 — nearly three months before the protests — the Kathmandu District Court issued an arrest warrant for broadcast journalist Dil Bhusan Pathak after he alleged on his YouTube show "Tough Talk" that <strong>Jaiveer Singh Deuba, the son of Sher Bahadur and Arzu Rana Deuba, had purchased Kathmandu's new Hilton Hotel using his parents' political influence.</strong> The authorities used the Electronic Transaction Act — a digital commerce law — to file cybercrime charges against the journalist for this reporting.</p>
+
+      <div class="evidence-box">
+        <div class="ev-label">East Asia Forum / June 2025</div>
+        <p>"The public, battered by an ever-widening wealth gap, was enraged by what appeared to be another case of elites using public power for private gain. In the following months, videos tagged '#nepokids' exposed the lavish lifestyles of political families, fuelling generational anger over privilege built on corruption."</p>
+      </div>
+
+      <p>Arresting a journalist for reporting on the politician's son's alleged wealth — while the average Nepali earned $1,400 a year — was the kind of action that turned frustration into fury. Nieman Reports noted that <strong>"memes ridiculing [Deuba's] son as a '#NepoKid' had been circulating for days, feeding resentments that erupted into physical violence."</strong> By the time the social media ban was announced on September 4, the Deuba family was already a primary symbol of everything the movement was fighting against.</p>
+
+      <p>Arzu Rana Deuba's own image had also been "further tarnished" — as the Vivekananda International Foundation put it — by ongoing allegations including the Bhutanese refugee scandal, allegations of influencing government transfers and appointments, and property irregularities in Tikapur. No formal charges had been filed on these matters, but the accumulation of allegations formed a portrait of a family that had used decades in power to build substantial personal wealth.</p>
+    </div>
+  </div>
+
+  <!-- ACCUSATION 7: AFTERMATH -->
+  <div class="accusation" id="aftermath">
+    <span class="accusation-num">07</span>
+    <div class="s-label">After the Fire · The Reckoning</div>
+    <h2>BEATEN, HOSPITALIZED, INVESTIGATED.<br><span class="red">AND STILL SCHEMING.</span></h2>
+
+    <div class="accusation-body">
+      <p>On September 9, the violence that Deuba's silence had helped enable came directly to his door. A mob stormed his Budhanilkantha home, beat both him and Arzu with blunt weapons, and set the house ablaze. Deuba suffered a head injury requiring 12 stitches. Arzu was also injured. They were evacuated by the Nepali Army and admitted to the Army Hospital. The cash was found. The house burned.</p>
+
+      <p>They moved to a rented house in Maharajgunj. The diplomatic passports obtained on September 19 — Constitution Day — caused outrage. They flew to Singapore for medical treatment, arriving by wheelchair at Changi Airport. They returned after treatment. Their first public appearance came on <strong>October 14 — over five weeks after the attack</strong> — when they attended a Nepali Congress Central Working Committee meeting in Lalitpur. At that meeting, Deuba announced he would step aside as party president. He handed over duties to Vice President Purna Bahadur Khadka to organise the 15th party convention.</p>
+
+      <div class="fact-strip">
+        <div class="fact-strip-item">
+          <span class="fact-num">12</span>
+          <span class="fact-label">Stitches on Deuba's head</span>
+        </div>
+        <div class="fact-strip-item">
+          <span class="fact-num">5 WKS</span>
+          <span class="fact-label">Before first public appearance</span>
+        </div>
+        <div class="fact-strip-item">
+          <span class="fact-num">JAN '26</span>
+          <span class="fact-label">Convention date Deuba delayed to</span>
+        </div>
+      </div>
+
+      <p>The inquiry commission investigating the September killings sent formal questionnaires to Deuba, asking him to appear before it or submit written responses about the events of September 8–9. He had been Co-ruler of the government. His Home Minister had overseen the security response. He was a material witness, if not more.</p>
+
+      <p>Despite announcing he was stepping aside, Deuba did not actually relinquish control. <strong>"Acting President has been rendered a mere dummy, as Deuba continues to wield all decisive powers,"</strong> political analyst Puranjan Acharya noted. By December 5, Deuba and Oli had met privately again — their first meeting since the protests that toppled their government — with Arzu and Oli's wife Radhika Shakya also present. Analysts interpreted the meeting as the two men beginning to position themselves for the March 2026 elections, potentially as allies again.</p>
+
+      <div class="pull">
+        <blockquote>The Gen Z protest wasn't just about replacing old leaders; it was a final warning. Deuba also had to lose the prime minister's post scheduled for him — and still the Deuba establishment maneuvers behind a cloud of confusion to delay the inevitable shift in power.</blockquote>
+        <cite>— Nepal News, November 2025</cite>
+      </div>
+
+      <p>The Gen-Z uprising had been, at its core, a demand that the three-man rotating prime ministership — Oli, Prachanda, Deuba, repeat for a decade — must end. Deuba's response, even post-attack, post-investigation, post-humiliation, was to try to preserve exactly that structure. <strong>Six decades in politics, and the lesson he drew from students dying in the streets was: wait for the next opening.</strong></p>
+    </div>
+  </div>
+
+  <!-- ACCUSATION 8: DEUBA'S PRE-2025 CORRUPTION RECORD -->
+  <div class="accusation" id="deuba-record">
+    <span class="accusation-num">08</span>
+    <div class="s-label">Before September 2025 · The Record That Preceded the Massacre</div>
+    <h2>DEUBA'S <span class="red">PERSONAL CORRUPTION</span><br>HISTORY THEY FORGOT TO MENTION.</h2>
+
+    <div class="accusation-body">
+      <p>The September 2025 events did not happen in a vacuum. Sher Bahadur Deuba had been Nepal's most recurring PM for three decades — and his personal corruption record predates the Gen-Z uprising by twenty years.</p>
+
+      <div class="evidence-box">
+        <div class="ev-label">2005 — Melamchi Water Supply Project · Convicted &amp; Jailed</div>
+        <p>In 2005, the Royal Commission on Corruption Control convicted Sher Bahadur Deuba of embezzling <strong>more than $5 million (approx. NPR 600 million)</strong> from the Melamchi Water Supply Project access road contract. He was sentenced to <strong>two years in prison</strong> and fined over <strong>$1 million</strong>. He served time at Dilli Bazaar Jail. He was later released after the Supreme Court declared the Royal Commission unconstitutional — not on the merits of the embezzlement finding, but on procedural grounds. The money was never recovered. The finding of embezzlement was never refuted on evidence.</p>
+      </div>
+
+      <div class="fact-strip">
+        <div class="fact-strip-item">
+          <span class="fact-num">$5M+</span>
+          <span class="fact-label">Embezzled from Melamchi project (found 2005)</span>
+        </div>
+        <div class="fact-strip-item">
+          <span class="fact-num">2 YRS</span>
+          <span class="fact-label">Prison sentence — Dilli Bazaar Jail</span>
+        </div>
+        <div class="fact-strip-item">
+          <span class="fact-num">5×</span>
+          <span class="fact-label">Became Prime Minister despite conviction history</span>
+        </div>
+      </div>
+
+      <p>The Melamchi case is the template for Deuba's political survival: <strong>get caught, challenge the process on technical grounds, survive on procedural technicalities, return to power.</strong> It was this playbook — impunity through institutional manipulation — that the Gen-Z generation was protesting against twenty years later.</p>
+
+      <div class="evidence-box">
+        <div class="ev-label">May 2023 — Arzu Rana Deuba · Bhutanese Refugee Scam Audio</div>
+        <p>In May 2023, an audio recording surfaced allegedly connecting <strong>Arzu Rana Deuba</strong> — then an MP, later appointed Foreign Minister in July 2024 — to payments of <strong>NPR 25 million (approx. $187,000)</strong> within the fake Bhutanese refugee resettlement scam. The scheme defrauded over 800 Nepali citizens, each paying Rs 1–5 million for documents promising resettlement in the United States. Arzu denied the allegations and called the audio fake. Police matched a voice in the recording to another defendant in the case but no formal charges were filed against Arzu. She was appointed Foreign Minister 14 months later.</p>
+      </div>
+
+      <p><strong>NC Home Minister Bal Krishna Khand</strong> was arrested in connection with the same Bhutanese refugee scam — a direct indictment of the NC's own government machine being used to facilitate mass fraud against Nepal's citizens. He was later released on bail. No full public accounting has been made.</p>
+
+      <div class="pull">
+        <blockquote>She was appointed Foreign Minister in July 2024. The audio recording alleging NPR 25 million in payments had surfaced just 14 months earlier. No charges were filed against her specifically. An NC Home Minister had been arrested in the same case. She took her Cabinet seat.</blockquote>
+        <cite>— Documented timeline, Nepali Times / Setopati, 2023–2024</cite>
+      </div>
+
+      <p>The pattern connecting Melamchi (2005), the refugee scam (2023), the journalist arrest (June 2025), and the September massacre silence is structural: <strong>the Nepali Congress, under Deuba's three-decade leadership, built a system where power enables impunity, and impunity enables power.</strong> The Gen-Z uprising was a response to precisely this system — not just to one social media ban, but to thirty years of watching it operate.</p>
+    </div>
+  </div>
+
+</div> <!-- end main-content -->
+
+<!-- ===== SIDEBAR ===== -->
+<div class="sidebar">
+
+  <div class="sidebar-card">
+    <h4>Fast Facts</h4>
+    <div class="kv-item">
+      <span class="kv-key">Coalition</span>
+      <span class="kv-val">NC + UML (Deuba + Oli)</span>
+    </div>
+    <div class="kv-item">
+      <span class="kv-key">In power during killings</span>
+      <span class="kv-val highlight-red">YES</span>
+    </div>
+    <div class="kv-item">
+      <span class="kv-key">Home Minister (NC)</span>
+      <span class="kv-val">Ramesh Lekhak</span>
+    </div>
+    <div class="kv-item">
+      <span class="kv-key">Day-1 statement from Deuba</span>
+      <span class="kv-val highlight-red">NONE</span>
+    </div>
+    <div class="kv-item">
+      <span class="kv-key">Shot dead Sep 8</span>
+      <span class="kv-val highlight-red">19 (by gunfire)</span>
+    </div>
+    <div class="kv-item">
+      <span class="kv-key">Total dead (all causes)</span>
+      <span class="kv-val highlight-red">76 (Nepal Army official)</span>
+    </div>
+    <div class="kv-item">
+      <span class="kv-key">Cash found at home</span>
+      <span class="kv-val highlight-red">USD + NPR confirmed</span>
+    </div>
+    <div class="kv-item">
+      <span class="kv-key">Melamchi conviction</span>
+      <span class="kv-val highlight-red">Jailed 2005, $5M embezzled</span>
+    </div>
+    <div class="kv-item">
+      <span class="kv-key">Arzu refugee audio</span>
+      <span class="kv-val highlight-red">NPR 25M alleged, May 2023</span>
+    </div>
+    <div class="kv-item">
+      <span class="kv-key">Deuba's scheduled next post</span>
+      <span class="kv-val">PM (rotation deal with Oli)</span>
+    </div>
+    <div class="kv-item">
+      <span class="kv-key">Did he become PM</span>
+      <span class="kv-val highlight-red">NO — protests ended it</span>
+    </div>
+    <div class="kv-item">
+      <span class="kv-key">Probe commission</span>
+      <span class="kv-val">Summoned for statement</span>
+    </div>
+  </div>
+
+  <div class="sidebar-card">
+    <h4>The Arzu Angle</h4>
+    <p>As <strong>Foreign Minister</strong> in the coalition government, Dr. Arzu Rana Deuba was not a peripheral figure. She was a senior cabinet member of the government that ordered the crackdown.</p>
+    <p>Her son <strong>Jaiveer</strong> was a central #NepoKids figure. A journalist was arrested for reporting on his alleged Hilton Hotel purchase. Her school was burned during the protests.</p>
+    <p>The protest inquiry commission's summons applied to the conduct of both the government that included her position. She appeared alongside Deuba at every major post-attack event, including the Singapore medical trip and the October 14 party comeback.</p>
+    <div class="verdict-box">
+      <div class="verdict-label">Position</div>
+      <p>Foreign Minister of the government whose security forces killed 19 protesters. Not charged. Summoned by probe commission.</p>
+    </div>
+  </div>
+
+  <div class="sidebar-card">
+    <h4>The #NepoKids Chain</h4>
+    <p><strong>Jun 11, 2025:</strong> Journalist Dil Bhusan Pathak reports Jaiveer Deuba bought Kathmandu's Hilton Hotel via political influence.</p>
+    <p><strong>Jun 11:</strong> Arrest warrant issued against Pathak under Electronic Transaction Act.</p>
+    <p><strong>Jun–Sep:</strong> #NepoKids content featuring Deuba family goes viral. Anger builds.</p>
+    <p><strong>Sep 4:</strong> NC-UML bans 26 social media platforms — seen as silencing the #NepoKids movement.</p>
+    <p><strong>Sep 8:</strong> Students march. Die.</p>
+    <p><strong>Sep 9:</strong> Deuba's home — and the Hilton Hotel — burned by protesters.</p>
+  </div>
+
+  <div class="sidebar-card">
+    <h4>Shot Locations: Day One</h4>
+    <p>Per Harvard's Atrocity Prevention Lab forensic analysis:</p>
+    <p><strong>Nearly all gunshot victims</strong> were struck <strong>above the waist</strong> — head, neck, chest. This is categorically prohibited under crowd control protocols. Standard rules of engagement require shots below the waist, or non-lethal force, for crowd dispersal.</p>
+    <div class="verdict-box">
+      <div class="verdict-label">UN Human Rights Office</div>
+      <p>"Deeply worrying allegations of unnecessary or disproportionate use of force." Urged "prompt and transparent investigation."</p>
+    </div>
+  </div>
+
+  <div class="sidebar-card">
+    <h4>The Decade of Rotation</h4>
+    <p>Since 2015, Nepal's PM post has rotated between three men — Oli (UML), Prachanda (Maoist), Deuba (NC) — across 14 governments and 8 prime ministers, none completing a full term.</p>
+    <p>The Gen-Z uprising was a direct rejection of this "musical chairs" system. In 36 hours, it ended the government that had calcified this arrangement for a decade.</p>
+    <div class="verdict-box">
+      <div class="verdict-label">Carnegie Endowment</div>
+      <p>"What had begun as a peaceful protest... ended with seventy-four deaths. The collective fury of a society mired in corruption toppled the government at a staggering cost."</p>
+    </div>
+  </div>
+
+</div><!-- end sidebar -->
+</div><!-- end layout -->
+
+<nav class="subpage-footer">
+  <span><i class="fa-solid fa-ram"></i> <a href="index.html">MuttonKaji | Congress 0.2</a> &copy; 2082 BS MuttonKaji Contributors</span>
+  <span>Sources: Nepali Times &middot; Kathmandu Post &middot; Wikipedia &middot; Britannica &middot; Al Jazeera &middot; Crisis Group &middot; VOA News</span>
+  <span>
+    <a href="deuba-genz-accountability.html">Deuba</a> &middot;
+    <a href="arzu-rana-deuba.html">Arzu</a> &middot;
+    <a href="gachhadar-report.html">Gachhadar</a> &middot;
+    <a href="gagan-thapa-expose.html">Gagan Thapa</a>
+  </span>
+</nav>
+
+</body>
+</html>

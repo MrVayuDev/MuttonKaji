@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAGAN THAPA AKA MUTTONKAJI — The Accountability File</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void: #080808;
+    --dark: #111111;
+    --card: #161616;
+    --border: rgba(255,255,255,0.07);
+    --white: #F2EDE6;
+    --muted: #666;
+    --orange: #E8600A;
+    --orange-dim: #7A3205;
+    --orange-glow: rgba(232,96,10,0.12);
+    --gold: #C8A84B;
+    --green: #2ECC71;
+    --red: #E74C3C;
+    --blue: #3498DB;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--void);
+    color: var(--white);
+    font-family: 'Lora', Georgia, serif;
+    overflow-x: hidden;
+  }
+
+  /* ===== TOP BAR ===== */
+  .top-bar {
+    background: var(--orange);
+    padding: 0.5rem 2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .top-bar a { color: #fff; text-decoration: none; }
+
+  /* ===== HEADER ===== */
+  header {
+    padding: 3rem 3rem 2rem;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: end;
+  }
+
+  .pub-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 0.8rem;
+  }
+
+  .issue-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    line-height: 2;
+  }
+
+  .issue-meta strong { color: var(--white); }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 5rem 3rem 4rem;
+    border-bottom: 3px solid var(--orange);
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 30% 0%, rgba(232,96,10,0.08) 0%, transparent 60%);
+  }
+
+  .goat-stamp {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--orange);
+    border: 2px solid var(--orange-dim);
+    padding: 0.5rem 1rem;
+    transform: rotate(3deg);
+    opacity: 0.7;
+  }
+
+  .hero-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 9vw, 7.5rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    max-width: 850px;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 .orange { color: var(--orange); }
+  .hero h1 .strike { text-decoration: line-through; opacity: 0.4; }
+
+  .hero-sub {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .hero-deck {
+    max-width: 680px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(242,237,230,0.7);
+    font-style: italic;
+    border-left: 3px solid var(--orange);
+    padding-left: 1.5rem;
+  }
+
+  /* ===== INDEX NAV ===== */
+  .index-nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid var(--border);
+  }
+
+  @media (max-width: 800px) {
+    .index-nav { grid-template-columns: 1fr 1fr; }
+    header { grid-template-columns: 1fr; }
+    .hero { padding: 3rem 1.5rem 3rem; }
+    .goat-stamp { display: none; }
+    main { grid-template-columns: 1fr; }
+    .sidebar { border-left: none; border-top: 1px solid var(--border); }
+  }
+
+  .nav-item {
+    padding: 1rem 1.5rem;
+    border-right: 1px solid var(--border);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: default;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .nav-item:hover { background: var(--card); color: var(--orange); }
+
+  .nav-item .num {
+    display: block;
+    font-size: 1.2rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  /* ===== MAIN LAYOUT ===== */
+  main {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .main-col { border-right: 1px solid var(--border); }
+
+  /* ===== CHAPTERS ===== */
+  .chapter {
+    padding: 4rem 3rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .ch-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 6rem;
+    font-weight: 800;
+    color: rgba(232,96,10,0.06);
+    line-height: 1;
+    position: absolute;
+    top: 2.5rem;
+    right: 2rem;
+    pointer-events: none;
+  }
+
+  .ch-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .ch-tag::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--orange-dim);
+  }
+
+  .chapter h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 2rem;
+    max-width: 700px;
+  }
+
+  .chapter h2 .hl { color: var(--orange); }
+  .chapter h2 .dim { color: var(--muted); font-weight: 400; }
+
+  .ch-body {
+    font-size: 0.97rem;
+    line-height: 1.9;
+    color: rgba(242,237,230,0.78);
+  }
+
+  .ch-body p + p { margin-top: 1.2rem; }
+
+  .ch-body strong { color: var(--white); font-weight: 600; }
+
+  .ch-body em { font-style: italic; color: var(--gold); }
+
+  /* ===== SOURCE BOX ===== */
+  .src {
+    margin: 2rem 0;
+    padding: 1.2rem 1.5rem;
+    background: rgba(232,96,10,0.05);
+    border-left: 3px solid var(--orange-dim);
+  }
+
+  .src-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.57rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 0.5rem;
+  }
+
+  .src p {
+    font-size: 0.88rem;
+    color: rgba(242,237,230,0.65);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* ===== STAT GRID ===== */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin: 2rem 0;
+  }
+
+  .stat-cell {
+    background: var(--card);
+    padding: 1.2rem;
+    text-align: center;
+  }
+
+  .s-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+    display: block;
+  }
+
+  .s-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-top: 0.4rem;
+    display: block;
+  }
+
+  /* ===== VERDICT TAG ===== */
+  .verdict {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.8rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    margin-bottom: 0.8rem;
+  }
+
+  .verdict.allegation { background: rgba(231,76,60,0.15); border: 1px solid rgba(231,76,60,0.3); color: #E74C3C; }
+  .verdict.confirmed { background: rgba(46,204,113,0.1); border: 1px solid rgba(46,204,113,0.25); color: #2ECC71; }
+  .verdict.disputed { background: rgba(200,168,75,0.1); border: 1px solid rgba(200,168,75,0.3); color: var(--gold); }
+  .verdict.pattern { background: rgba(52,152,219,0.1); border: 1px solid rgba(52,152,219,0.3); color: var(--blue); }
+
+  /* ===== PROMISE TABLE ===== */
+  .promise-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.85rem;
+  }
+
+  .promise-table th {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--orange);
+    padding: 0.7rem 1rem;
+    text-align: left;
+    border-bottom: 2px solid var(--orange-dim);
+    background: var(--card);
+  }
+
+  .promise-table td {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--border);
+    color: rgba(242,237,230,0.75);
+    line-height: 1.5;
+    vertical-align: top;
+  }
+
+  .promise-table tr:hover td { background: rgba(232,96,10,0.03); }
+
+  .badge-broken {
+    display: inline-block;
+    background: rgba(231,76,60,0.15);
+    color: #E74C3C;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    padding: 0.2rem 0.5rem;
+    text-transform: uppercase;
+    border: 1px solid rgba(231,76,60,0.3);
+    white-space: nowrap;
+  }
+
+  .badge-new {
+    display: inline-block;
+    background: rgba(200,168,75,0.1);
+    color: var(--gold);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    padding: 0.2rem 0.5rem;
+    text-transform: uppercase;
+    border: 1px solid rgba(200,168,75,0.25);
+    white-space: nowrap;
+  }
+
+  .badge-ok {
+    display: inline-block;
+    background: rgba(46,204,113,0.1);
+    color: #2ECC71;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    padding: 0.2rem 0.5rem;
+    text-transform: uppercase;
+    border: 1px solid rgba(46,204,113,0.25);
+    white-space: nowrap;
+  }
+
+  /* ===== TIMELINE ===== */
+  .tl {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--orange-dim);
+    margin: 2rem 0;
+  }
+
+  .tl-entry {
+    position: relative;
+    padding-bottom: 2rem;
+  }
+
+  .tl-entry::before {
+    content: '';
+    position: absolute;
+    left: -1.9rem;
+    top: 0.35rem;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+    border: 2px solid var(--void);
+    box-shadow: 0 0 0 2px var(--orange-dim);
+  }
+
+  .tl-year {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--orange);
+    margin-bottom: 0.3rem;
+  }
+
+  .tl-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .tl-body {
+    font-size: 0.85rem;
+    color: rgba(242,237,230,0.65);
+    line-height: 1.7;
+  }
+
+  /* ===== COOPERATIVE TABLE ===== */
+  .coop-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.82rem;
+  }
+
+  .coop-table th {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.57rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    background: var(--card);
+    border-bottom: 2px solid var(--orange-dim);
+  }
+
+  .coop-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid var(--border);
+    color: rgba(242,237,230,0.7);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .coop-table td.amount {
+    font-family: 'Space Mono', monospace;
+    color: var(--red);
+    font-weight: 700;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .coop-table td.party {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+  }
+
+  .coop-table .nc { color: #3498DB; }
+  .coop-table .uml { color: #E74C3C; }
+  .coop-table .rsp { color: #2ECC71; }
+  .coop-table .maoist { color: var(--gold); }
+
+  /* ===== PULL QUOTE ===== */
+  .pull {
+    margin: 2.5rem 0;
+    padding: 1.5rem 2rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  .pull::after {
+    content: '"';
+    font-family: 'Syne', sans-serif;
+    font-size: 8rem;
+    font-weight: 800;
+    color: rgba(232,96,10,0.07);
+    position: absolute;
+    bottom: -2rem;
+    right: 1rem;
+    line-height: 1;
+  }
+
+  .pull blockquote {
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+  }
+
+  .pull cite {
+    display: block;
+    margin-top: 0.8rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== SIDEBAR ===== */
+  .sidebar {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .sb-card {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sb-card:last-child { border-bottom: none; }
+
+  .sb-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 2px solid var(--orange-dim);
+  }
+
+  .kv { padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.8rem; align-items: baseline; }
+  .kv .k { font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.05em; flex-shrink: 0; }
+  .kv .v { color: var(--white); font-size: 0.82rem; text-align: right; }
+  .kv .v.red { color: var(--red); }
+  .kv .v.green { color: var(--green); }
+  .kv .v.orange { color: var(--orange); }
+  .kv .v.gold { color: var(--gold); }
+
+  .sb-para { font-size: 0.83rem; line-height: 1.7; color: rgba(242,237,230,0.6); margin-bottom: 0.8rem; }
+
+  .sb-para strong { color: var(--white); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    border-top: 3px solid var(--orange);
+    padding: 2rem 3rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  footer .orange { color: var(--orange); }
+
+  /* Responsive */
+  @media (max-width: 800px) {
+    .chapter { padding: 2.5rem 1.5rem; }
+    .sidebar { padding: 2rem 1.5rem; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .promise-table th, .promise-table td { padding: 0.6rem 0.5rem; font-size: 0.78rem; }
+    .coop-table th, .coop-table td { padding: 0.5rem; font-size: 0.75rem; }
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<nav class="subpage-nav">
+  <a href="index.html" class="subpage-logo">
+    <i class="fa-solid fa-ram"></i> MuttonKaji <span style="font-size:0.7rem;font-weight:400;color:#888;margin-left:4px;">Congress 0.2</span>
+  </a>
+  <ul class="subpage-nav-links">
+    <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+    <li><a href="index.html#politicians"><i class="fa-solid fa-user-tie"></i> All Politicians</a></li>
+    <li><a href="deuba-genz-accountability.html">Deuba</a></li>
+    <li><a href="arzu-rana-deuba.html">Arzu</a></li>
+    <li><a href="gachhadar-report.html">Gachhadar</a></li>
+    <li><a href="gagan-thapa-expose.html" class="active">Gagan Thapa</a></li>
+  </ul>
+</nav>
+<!-- HERO -->
+<div class="hero">
+  <div class="goat-stamp">🐐 MUTTONKAJI FILE</div>
+  <div class="hero-label">EXPOSE · FULL DOSSIER · FROM STUDENT DAYS TO 2026</div>
+  <h1>GAGAN <span class="orange">THAPA</span><br><span class="strike">REFORMER</span><br>OR RECYCLED<br><span class="orange">OLD GUARD?</span></h1>
+  <div class="hero-sub">Congress 2.0 · Or the same old scam in a new jacket?</div>
+  <p class="hero-deck">He sells himself as Nepal's Gen-Z saviour — the man who broke the Deuba dynasty, the reformer who will transform the nation. But from Tri-Chandra park funds to goat subsidies, from the BP Academy vice-chancellor cash scandal to the sahakari scam he weaponized but never solved, this is the file Gagan Thapa's PR machine hopes you'll never read.</p>
+</div>
+
+<!-- INDEX NAV -->
+<div class="index-nav">
+  <div class="nav-item"><span class="num">01</span>Origin Story & Early Scandals</div>
+  <div class="nav-item"><span class="num">02</span>The Muttonkaji Affair</div>
+  <div class="nav-item"><span class="num">03</span>Health Minister & Broken Promises</div>
+  <div class="nav-item"><span class="num">04</span>The Sahakari Scam Hypocrisy</div>
+  <div class="nav-item"><span class="num">05</span>NC Party Scandals & Congress Nexus</div>
+  <div class="nav-item"><span class="num">06</span>The Split He Engineered</div>
+  <div class="nav-item"><span class="num">07</span>Congress 2.0: Promises vs Reality</div>
+  <div class="nav-item"><span class="num">08</span>The Sarlahi Gamble</div>
+</div>
+
+<main>
+<div class="main-col">
+
+<!-- CHAPTER 01 -->
+<div class="chapter" id="ch1">
+  <div class="ch-number">01</div>
+  <div class="ch-tag">1998–2005 · Student Politics</div>
+  <h2>THE <span class="hl">AUDITOR GENERAL</span> REPORT NOBODY TALKS ABOUT</h2>
+
+  <div class="verdict allegation">● Allegation — Parliamentary record, cited in HoR session</div>
+
+  <div class="ch-body">
+    <p>Before Gagan Thapa was Nepal's reform icon, he was the president of the Free Student Union (FSU) at Tri-Chandra College from 1998 to 2000. This is where the first red flag appears — and it was entered into the official parliamentary record by no less than then-Home Minister Rabi Lamichhane during a House of Representatives session on May 20, 2024.</p>
+
+    <p><strong>Lamichhane alleged on the floor of Parliament: "In 2055 BS (1998), when he [Thapa] was the president of the Free Students Union, there was a report from the Auditor General about corruption in the construction of a park at Tri-Chandra College, amounting to more than Rs 30 lakhs."</strong> He further alleged that Thapa had embezzled millions in the name of constructing that park, and had also misused agricultural grants during this period.</p>
+
+    <div class="src">
+      <div class="src-label">Source · Kathmandu Post / OnlineKhabar · May 20, 2024 (Parliamentary session)</div>
+      <p>"Citing media reports, Lamichhane also claimed that Thapa had embezzled millions of rupees in the name of constructing a park at Tri-Chandra College and had misused agricultural grants. He also asked whether the main opposition would want a probe panel against everyone the media has linked with corruption."</p>
+    </div>
+
+    <p>Thapa's response was theatrical: <em>"I request him: Please form a committee to probe me. Such a committee to probe Gagan Thapa can be formed even within the RSP. Please do it."</em> He challenged Lamichhane to investigate his entire life "starting from his birth in Prasuti Griha [maternity hospital] in Kathmandu." It was a classic political counterpunch — but notably, <strong>no committee was formed, no Auditor General report was publicly produced by either side, and the matter simply faded away without resolution.</strong></p>
+
+    <p>Thapa was also accused of misusing agricultural subsidies during his time running a goat farm project in Nuwakot and a meat shop in Golfutar, Kathmandu — this is the origin of the "Muttonkaji" nickname. (See Chapter 02.) Beyond this, Lamichhane alleged that Thapa had sold national secrets to foreign powers — a charge Thapa dismissed but never addressed with any evidence of his own.</p>
+
+    <div class="tl">
+      <div class="tl-entry">
+        <div class="tl-year">1994–1998</div>
+        <div class="tl-title">Joins Tri-Chandra FSU</div>
+        <div class="tl-body">Becomes active in student politics. Chemistry BSc student turns full-time political organiser.</div>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-year">1998–2000</div>
+        <div class="tl-title">FSU President — Park Scandal Alleged</div>
+        <div class="tl-body">Serves as Tri-Chandra Campus FSU President. Auditor General report allegedly documents Rs 30+ lakh irregularity in park construction. This allegation is made official in Parliament, 2024. No formal CIAA case filed.</div>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-year">2004</div>
+        <div class="tl-title">Jailed for Sedition by Royal Government</div>
+        <div class="tl-body">Arrested, charged with sedition under the Offences Against the State Act for anti-monarchy activities. Declared Prisoner of Conscience by Amnesty International. Released by Supreme Court order. Legitimately his most principled moment.</div>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-year">2005</div>
+        <div class="tl-title">Re-arrested, NSU Presidency Blocked</div>
+        <div class="tl-body">Arrested again on July 27, 2005 at Hanuman Dhoka, held for weeks. Also blocked by NC party president Girija Prasad Koirala from contesting NSU presidency on charges of being "agents of the palace." Thapa and Koirala faction fight physically at the 10th NSU General Convention in Pokhara.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER 02 -->
+<div class="chapter" id="ch2">
+  <div class="ch-number">02</div>
+  <div class="ch-tag">2014–2026 · The Goat Farm Affair</div>
+  <h2>WHY THEY CALL HIM <span class="hl">MUTTONKAJI</span>: THE FULL STORY</h2>
+
+  <div class="verdict disputed">● Disputed — Official PACT statement contains factual contradictions per South Asia Check</div>
+
+  <div class="ch-body">
+    <p>The nickname "Bakhra" (Goat) or "Muttonkaji" — which opponents weaponized and Thapa's own team eventually tried to rebrand as "GOAT (Greatest of All Time)" — has its roots in one of the most meticulously documented controversies of his career: <strong>the Sunkhani Ekikrit Krishi Kendra (SEKK) agricultural subsidy case.</strong></p>
+
+    <p>Here are the facts, as verified by South Asia Check, Nepal's leading fact-checking organisation:</p>
+
+    <p><strong>The Setup:</strong> On August 25, 2014, the Ministry of Agricultural Development's Project for Agriculture Commercialization and Trade (PACT) signed an agreement with SEKK — an agro-business entity of which Gagan Thapa was chairman — to run a sub-project focused on processing and marketing of meat products (hence: goat farm, Nuwakot; meat shop, Golfutar, Kathmandu).</p>
+
+    <p><strong>The Conflict:</strong> Just three days after signing this agreement, Thapa was elected chairman of the parliamentary Water Resources Committee — the very committee under whose purview PACT fell. This is a textbook conflict of interest. He was simultaneously chairman of an entity receiving government agriculture grants AND chairman of the parliamentary body that oversees those grants.</p>
+
+    <p><strong>The Official Denial That Doesn't Hold Up:</strong> PACT issued a public statement on November 20, 2017, claiming (a) the sub-project was annulled "immediately after March 2, 2016" and (b) it was annulled to avoid conflict of interest after Thapa became parliamentary committee chair.</p>
+
+    <div class="src">
+      <div class="src-label">Source · South Asia Check · Fact Check · November 22, 2017</div>
+      <p>"According to the website of PACT, the sub-project was annulled on July 24, 2017. Therefore, PACT statement's claim contradicts the information on its own website. PACT and SEKK had reached an agreement on August 25, 2014. On the third day of the agreement, Thapa was elected as chairman of the parliament's Water Resources Committee. According to the PACT statement, Thapa wrote to PACT only on December 14, 2015 — around 16 months after his election as chairman of the parliamentary committee — with a request to annul the agreement. But the agreement was annulled on July 24, 2017, one year and seven months after the request."</p>
+    </div>
+
+    <p>In plain language: <strong>Thapa ran a government-grant-receiving agribusiness while simultaneously chairing the parliamentary committee that oversaw that grant programme — for at least 16 months — before requesting annulment. And the annulment itself didn't happen for a further 19 months after that request.</strong> The PACT statement defending him was itself found to be factually inaccurate by South Asia Check.</p>
+
+    <p>In Parliament in May 2024, Lamichhane put the allegations of "goat rearing controversies" and "contradictions surrounding projects associated with Thapa" on record. He explicitly called out the Sunkhani project, the Nuwakot farm, and the Golfutar meat shop.</p>
+
+    <p>Thapa's camp launched a PR counter-offensive. Supporters registered the domain <em>mutton.world</em>, built a website titled "Gagan Thapa for New Nepal," created a rap promotional song, and redefined "GOAT" as "Greatest of All Time." The tab title literally reads "GOAT of Nepal, Gagan Thapa." A section called "Muttonfesto" outlines his political vision. This is how you know a scandal has legs — when your own supporters need a dedicated website to rebrand the insult.</p>
+
+    <div class="stat-grid">
+      <div class="stat-cell">
+        <span class="s-num">Aug 25</span>
+        <span class="s-label">2014: Date PACT-SEKK agreement signed</span>
+      </div>
+      <div class="stat-cell">
+        <span class="s-num">+3 days</span>
+        <span class="s-label">When Thapa became chair of oversight committee</span>
+      </div>
+      <div class="stat-cell">
+        <span class="s-num">35 months</span>
+        <span class="s-label">Before agreement was finally annulled (July 2017)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER 03 -->
+<div class="chapter" id="ch3">
+  <div class="ch-number">03</div>
+  <div class="ch-tag">2016–2017 · Health Minister</div>
+  <h2>HEALTH MINISTER: <span class="hl">THE PROMISES</span> HE COULDN'T KEEP <span class="dim">EVEN THEN</span></h2>
+
+  <div class="verdict pattern">● Pattern — Confirmed by multiple news sources and parliamentary record</div>
+
+  <div class="ch-body">
+    <p>Thapa's tenure as Health Minister (August 2016 – May 2017) is the one chapter his supporters cite most frequently as proof of his reformist credentials. Universal health insurance! Doctor KC solidarity! Gangalal Heart Centre expansion! The list of proclaimed achievements is long. But scratch the surface, and a familiar pattern emerges: <strong>public promises made for political capital, institutional capture where convenient, and retreat when interests conflict.</strong></p>
+
+    <p><strong>The Rs 5 Million VIP Medical Allowance Contradiction:</strong> In October 2016, the cabinet approved Rs 5 million for Sujata Koirala's cancer treatment in Singapore from the state exchequer. Thapa publicly announced he had prepared a guideline specifically to "put a ceiling on medical allowances for VIPs" — a maximum of Rs 1.5 million. But the Cabinet decision went ahead anyway, breaching his own guideline. Social media called for his resignation. <strong>His response: "Giving up and walking is not a logical choice."</strong> The critics noted he did not resign, he did not block it, and his vaunted medical-allowance reform was overridden by the same party he served.</p>
+
+    <div class="src">
+      <div class="src-label">Source · Kathmandu Post · November 15, 2016</div>
+      <p>"Some of those who have heaped criticism on Minister Thapa have even gone on to say that he should step down for failing 'to keep his word.'"</p>
+    </div>
+
+    <p><strong>The BP Koirala Academy Vice-Chancellor Scandal (Rs 14 Crore Allegation):</strong> During Thapa's tenure as Health Minister, it was widely reported in Nepal's media that <em>Rs 14 crore</em> was paid to secure the appointment of Prof. Dr. Rajkumar Rauniyar as Vice-Chancellor of the BP Koirala Institute of Health Sciences (BPKIHS) in Dharan. The claim, repeated by Lamichhane on the floor of Parliament, was that "someone took Rs 14 crore and made Prof. Rajkumar Rauniar the Vice Chancellor of the BP Health Science Academy and that money was handed over for securing a position."</p>
+
+    <p>Critically: Thapa's own account confirms that during his tenure, he had recommended Dr. Raamesh Koirala for the VC position but was overruled by party interference — specifically by then-NC General Secretary Krishna Prasad Sitaula, reportedly instructed by Arzu Rana Deuba. Rauniyar was then appointed instead. Rauniyar was <strong>later sacked during a Senate meeting for allegedly misusing his position and mismanaging the institution.</strong> In other words: the VC appointed via political maneuvering during Thapa's tenure was eventually removed for corruption. No charges were filed against Thapa personally for the Rs 14 crore allegation, but the pattern of political interference in health appointments was confirmed by events.</p>
+
+    <p><strong>The Conflict of Interest in Agricultural Oversight:</strong> As minister in 2016, Thapa also simultaneously held chairmanship of the parliamentary Agriculture and Water Resources Committee — an unusual concentration of roles that was precisely the structure that gave the PACT/SEKK goat farm controversy its conflict-of-interest dimension.</p>
+
+    <div class="pull">
+      <blockquote>These days, every cabinet meeting feels alarming. I'm not saying it's just this prime minister or that one — but it's deeply troubling. The problem is that middlemen now have access all the way to the leadership's bedrooms.</blockquote>
+      <cite>— Gagan Thapa himself, April 2025, speaking about the same system he was part of</cite>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER 04 -->
+<div class="chapter" id="ch4">
+  <div class="ch-number">04</div>
+  <div class="ch-tag">2022–2025 · The Cooperative Scam</div>
+  <h2>THE SAHAKARI HYPOCRISY: <span class="hl">WEAPONIZING</span> A SCAM <span class="dim">NC HELPED CREATE</span></h2>
+
+  <div class="verdict confirmed">● Confirmed — Wikipedia, Kathmandu Post, South Asia Check, parliamentary record</div>
+
+  <div class="ch-body">
+    <p>Beginning in 2023, Gagan Thapa and the Nepali Congress made the cooperative (sahakari) scam the centrepiece of their opposition strategy. Thapa personally led parliamentary disruptions, press conferences, and street protests demanding investigation into Home Minister Rabi Lamichhane's involvement in the diversion of billions in depositors' funds through cooperatives linked to Gorkha Media Network.</p>
+
+    <p>This was morally coherent and factually grounded — Lamichhane's involvement in the scam was substantive and documented. But here is the accountability problem: <strong>the cooperative scandal in Nepal is not a story about RSP. It is a story about all parties, including — specifically and documentably — the Nepali Congress.</strong></p>
+
+    <div class="src">
+      <div class="src-label">Source · Wikipedia · Cooperative Scandal in Nepal · 2025 (multi-source entry)</div>
+      <p>"Chandra Bahadur (CB) Lama, former Nepali Congress candidate and operator of Kantipur Savings and Credit Cooperative, is in custody for misappropriating billions of rupees."</p>
+    </div>
+
+    <p>The Wikipedia entry on Nepal's cooperative scandal — built from multiple verified news sources — directly names <strong>CB Lama, a former Nepali Congress candidate, as a cooperative fraudster currently in custody for misappropriating billions of rupees.</strong> This is not a minor figure: this is a candidate fielded by the party whose current president was simultaneously loudly demanding everyone else be investigated for cooperative fraud.</p>
+
+    <p>The broader scandal involves dozens of cooperatives across Kathmandu, Pokhara, and Butwal. Over Rs 60+ billion was embezzled from ordinary depositors — teachers, farmers, remittance recipients. The political nexus cuts across all parties:</p>
+
+    <!-- COOPERATIVE TABLE -->
+    <table class="coop-table">
+      <tr>
+        <th>Person / Cooperative</th>
+        <th>Party Link</th>
+        <th>Amount Embezzled</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>CB Lama / Kantipur Savings & Credit Coop</td>
+        <td class="party nc">NC Candidate</td>
+        <td class="amount">Billions NPR</td>
+        <td>In custody</td>
+      </tr>
+      <tr>
+        <td>Rabi Lamichhane / Gorkha Media Cooperative</td>
+        <td class="party rsp">RSP</td>
+        <td class="amount">NPR 2.58 billion+</td>
+        <td>Court ordered detention</td>
+      </tr>
+      <tr>
+        <td>KB Upreti / Rashtriya Sahakari Bank</td>
+        <td class="party uml">CPN-UML Official</td>
+        <td class="amount">NPR 6.27 billion</td>
+        <td>Imprisoned</td>
+      </tr>
+      <tr>
+        <td>Dev Kumar Nepali / Image Coop</td>
+        <td class="party uml">Former Mayor</td>
+        <td class="amount">NPR 2.25 billion</td>
+        <td>Arrested (New Delhi)</td>
+      </tr>
+      <tr>
+        <td>Dipak Manange / Oriental Coop</td>
+        <td class="party" style="color:var(--muted)">Cross-party</td>
+        <td class="amount">NPR 6 billion+</td>
+        <td>Under investigation</td>
+      </tr>
+      <tr>
+        <td>Shankar Karki / Prime Coop</td>
+        <td class="party" style="color:var(--muted)">—</td>
+        <td class="amount">NPR 597.2 million</td>
+        <td>Jailed</td>
+      </tr>
+      <tr>
+        <td>Raman Paudel / Mitramilan Coop</td>
+        <td class="party" style="color:var(--muted)">—</td>
+        <td class="amount">NPR 1.8 billion</td>
+        <td>Jailed</td>
+      </tr>
+    </table>
+
+    <p><strong>Total estimated cooperative fraud across Nepal: upwards of Rs 100 billion (approximately USD 750+ million), affecting hundreds of thousands of depositors.</strong> Thapa and Congress spent months demanding Lamichhane's removal as Home Minister on cooperative grounds — but when it came to forming the parliamentary probe committee, <strong>Congress eventually agreed to drop Lamichhane's name from the Terms of Reference altogether.</strong></p>
+
+    <div class="src">
+      <div class="src-label">Source · Kathmandu Post · May 25, 2024</div>
+      <p>"This happened after the main opposition Nepali Congress — which had been insisting on exclusively investigating Deputy Prime Minister and Home Minister Rabi Lamichhane over his involvement in the scam — apparently agreed to avoid the mention of Lamichhane in the committee's terms of reference (TOR)."</p>
+    </div>
+
+    <p>Thapa's party had paralyzed Parliament for weeks demanding justice for sahakari scam victims, disrupted sessions, held street rallies — and then, when a backroom deal was needed to allow PM Dahal's confidence vote to proceed, dropped the very demand they'd used to block all business. The victims got neither their money nor their justice. The Congress got Dahal's government to survive.</p>
+
+    <p>Furthermore: <strong>Lamichhane, when defending himself in Parliament, accused Thapa of using his position to weaponize the CIAA against his own party colleague Mohan Bahadur Basnet</strong> (the Teramox case). Basnet himself publicly accused Thapa at a NC Central Working Committee meeting, saying: <em>"General Secretary Gagan Thapa actively pursued the Teramox case against me, both inside the party and in Parliament. It's because of him that the CIAA initiated the investigation."</em> Basnet warned: <em>"Sooner or later, everyone's turn will come. No one will remain innocent."</em></p>
+
+    <div class="stat-grid">
+      <div class="stat-cell">
+        <span class="s-num">Rs 100B+</span>
+        <span class="s-label">Estimated total cooperative fraud in Nepal</span>
+      </div>
+      <div class="stat-cell">
+        <span class="s-num">1</span>
+        <span class="s-label">NC candidate named in fraud (CB Lama, in custody)</span>
+      </div>
+      <div class="stat-cell">
+        <span class="s-num">ZERO</span>
+        <span class="s-label">NC leaders investigated by NC's own demand</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER 05 -->
+<div class="chapter" id="ch5">
+  <div class="ch-number">05</div>
+  <div class="ch-tag">NC Party Scandals — Institutional Accountability</div>
+  <h2>NEPALI CONGRESS SCANDALS: <span class="hl">THE PARTY THAPA NOW LEADS</span></h2>
+
+  <div class="verdict confirmed">● Confirmed — Multiple verified sources</div>
+
+  <div class="ch-body">
+    <p>Any accountability file on Gagan Thapa must address not just his personal controversies but the institutional rot of the party he now leads and wants to govern Nepal with. He has repeatedly told voters: "We changed the Congress, we will change the country." The question is: what exactly was changed, and what remains the same?</p>
+
+    <p><strong>1. The Social Media Ban — NC Co-authored the Trigger</strong><br>The very spark that ignited the Gen-Z uprising of September 2025 was the NC-UML coalition government's decision to ban 26 social media platforms for failing to register with the government. <strong>Nepali Congress was a full coalition partner. NC's own Home Minister, Ramesh Lekhak, was responsible for the security response that killed 19 protesters.</strong> Lekhak resigned after the killings — but only after the blood was spilled. NC co-wrote the law that started the chain reaction.</p>
+
+    <div class="src">
+      <div class="src-label">Source · Wikipedia · Nepali Congress Entry · 2025</div>
+      <p>"The coalition government introduced a mandate to shut down social media for failing to register with the government which served as the trigger for the 2025 Gen Z protests. Following the death of 19 protesters as a result of the use of live ammunition, home minister Ramesh Lekhak from the party resigned."</p>
+    </div>
+
+    <p><strong>2. Journalist Arrested for Reporting on NC Leaders' Family</strong><br>In June 2025, journalist Dil Bhusan Pathak was hit with an arrest warrant after reporting on Jaiveer Singh Deuba's alleged purchase of Kathmandu's new Hilton Hotel using political influence. The Electronic Transaction Act — a tool of the NC-UML coalition government — was used to target him. Thapa said nothing publicly to defend the journalist's press freedom.</p>
+
+    <p><strong>3. Arzu Rana Deuba's Alleged Interference in Health Appointments</strong><br>As verified by Setopati's reporting, Arzu Rana Deuba — NC Central Member and Foreign Minister — repeatedly blocked the appointment of Dr. Raamesh Koirala as VC of BPKIHS, instructing party colleagues to recommend other candidates instead. The VC who was eventually appointed was later sacked for corruption. Thapa himself was victimised by this exact interference during his health ministry — yet remained in the same party power structure for years after.</p>
+
+    <p><strong>4. NC Candidate CB Lama in Custody for Cooperative Fraud</strong><br>Already detailed above. A candidate directly fielded by NC is in custody for misappropriating billions. No accountability demanded by Thapa for party-linked cooperatives.</p>
+
+    <p><strong>5. Fake Bhutanese Refugee Scam — NC Leaders on Audio</strong><br>Lamichhane also raised, in Parliament, the existence of audio recordings of NC leaders in connection with the fake Bhutanese refugee case — a massive fraud in which tens of thousands of non-Bhutanese people were resettled in third countries as "Bhutanese refugees," generating enormous sums of money. This matter has never been formally investigated by any body at NC's demand.</p>
+
+    <p><strong>6. Arzu Rana Deuba — Tikapur Land, Watch Theft, Diplomatic Passport</strong><br>The catalogue of allegations against Arzu is long: illegal registration of public land in Tikapur (Kailali) under private names; alleged connection to the theft of a luxury watch; and the obtaining of diplomatic passports on Constitution Day (a public holiday) — potentially to flee investigations. None of these are formal charges, but they form the backdrop against which Thapa's "New Congress" brand must be evaluated.</p>
+
+    <p><strong>7. Contempt of Court Case Against Thapa Himself</strong><br>In January 2026, advocates Ananta Raj Luitel, Pratibha Upreti, and Bishal Thapa filed a contempt of court case against Gagan Thapa in the Supreme Court, after he made public statements claiming the Supreme Court was delaying a case related to the appointment of 52 officials to constitutional bodies. The Supreme Court confirmed registration of the case. Thapa's remarks were held to potentially undermine judicial authority.</p>
+
+    <div class="src">
+      <div class="src-label">Source · Setopati English · January 2026</div>
+      <p>"A contempt of court case has been filed against Nepali Congress General Secretary Gagan Thapa. Supreme Court spokesperson Achyut Kuinkel said that the contempt case against Thapa was registered on Sunday."</p>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER 06 -->
+<div class="chapter" id="ch6">
+  <div class="ch-number">06</div>
+  <div class="ch-tag">January 2026 · The Party Split</div>
+  <h2>THE SPLIT HE ENGINEERED: <span class="hl">DEMOCRATIC REFORM</span> OR <span class="dim">POWER GRAB?</span></h2>
+
+  <div class="verdict pattern">● Pattern — Kathmandu Post, Tribune India, January 2026</div>
+
+  <div class="ch-body">
+    <p>The narrative Thapa sells: he broke the Deuba dynasty for the good of the nation, forced a historic special convention, and won the party presidency against the old guard. The reality is considerably more layered.</p>
+
+    <p><strong>The Heart of the Dispute Was Ticket Control — Not Reform:</strong> According to Kathmandu Post reporting from November 2025, <em>"Control over ticket distribution remains at the heart of the dispute. Party president Deuba and his loyalists want to continue the current dispensation and retain control over ticket distribution, while the rival faction led by Thapa and Sharma wants to remove the current leadership and assert their own influence over candidate selection."</em> The demand for democratic reform was real — but so was the political self-interest driving it.</p>
+
+    <p><strong>He Was Kicked Out Before He Won:</strong> On January 14, 2026, the Deuba-led Central Working Committee removed Gagan Thapa, Bishwa Prakash Sharma, and Farmullah Munsur from NC party membership for five years — for "not following party rules and regulations." This was done <strong>without giving the accused any opportunity to present a clarification or defense</strong>, in violation of Article 34 of the party statute. Thapa called the action invalid and proceeded with the special convention anyway.</p>
+
+    <p><strong>The Convention Was Constitutionally Contested:</strong> The Deuba faction called the special general convention "illegitimate and against the party charter." They filed with the Election Commission to block it. The EC ultimately sided with Thapa, recognising the special convention on the grounds that over 54% of elected representatives had demanded it. But the legal battle was real — this was not a clean democratic transition. <strong>It was Nepal's third NC party split in history</strong> (after 1953 and 2002).</p>
+
+    <p><strong>Even After Winning, He Couldn't Run His Own Party Office:</strong> Deuba loyalists physically blocked Thapa from entering the NC central office in Sanepa for eight days after his election. He finally entered on January 23. His first Central Working Committee meeting admitted that even the candidate selection process for the March 5 election could not be made "more inclusive" due to time constraints — the very reform he'd promised as justification for the split.</p>
+
+    <div class="src">
+      <div class="src-label">Source · Kathmandu Post · January 24, 2026</div>
+      <p>"From next time onwards, Congress candidates will not be selected this way. Friends at the district level will decide by voting. Due to time constraints, we could not complete the work [this time]," Thapa said. "Even though we wanted to do things differently, we couldn't this time."</p>
+    </div>
+
+    <p>This is the central admission: in the very election that followed his "democratic revolution" within the party, Gagan Thapa could not implement the most basic reform — bottom-up candidate selection — because of "time constraints." The party he calls "transformed" selected its candidates for the March 5, 2026 election the same old way, by the same old mechanisms, under his watch.</p>
+
+    <div class="stat-grid">
+      <div class="stat-cell">
+        <span class="s-num">8 days</span>
+        <span class="s-label">He was locked out of his own party office after "winning"</span>
+      </div>
+      <div class="stat-cell">
+        <span class="s-num">3rd</span>
+        <span class="s-label">Time NC has formally split (1953, 2002, 2026)</span>
+      </div>
+      <div class="stat-cell">
+        <span class="s-num">0</span>
+        <span class="s-label">Candidate selections done democratically for March 5 poll</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER 07 -->
+<div class="chapter" id="ch7">
+  <div class="ch-number">07</div>
+  <div class="ch-tag">2026 — Promises vs Pattern</div>
+  <h2><span class="hl">THE JANAKPUR DECLARATION</span>: WHAT HE'S PROMISING NOW</h2>
+
+  <div class="verdict pattern">● Pattern — Compare with track record above</div>
+
+  <div class="ch-body">
+    <p>On February 18, 2026 — just two weeks before the March 5 election — Thapa delivered the "Janakpur Declaration" and released the NC election manifesto ("Pratigya Patra"), presenting a 10-point contract with voters. The document is slick, the promises are bold, and the oratory was widely praised. Let's hold each major promise against the documented record:</p>
+
+    <table class="promise-table">
+      <tr>
+        <th>Promise (2026)</th>
+        <th>Track Record</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td><strong>Two-term PM limit / "Exit Policy"</strong></td>
+        <td>His own party just had the same man (Deuba) as PM candidate five times. Thapa supported this arrangement as General Secretary. Only opposed it when his own candidacy became viable.</td>
+        <td><span class="badge-broken">Question mark</span></td>
+      </tr>
+      <tr>
+        <td><strong>End political interference in university & constitutional appointments</strong></td>
+        <td>As Health Minister, Thapa watched Arzu Rana Deuba block his own preferred VC candidate and install one who was later sacked for corruption. Thapa stayed in the party.</td>
+        <td><span class="badge-broken">Pattern of failure</span></td>
+      </tr>
+      <tr>
+        <td><strong>Candidate selection by district-level voting</strong></td>
+        <td>His own NC convention (Jan 2026) selected March 5 candidates by old methods. <em>He admitted this himself.</em> "Due to time constraints, we could not complete the work."</td>
+        <td><span class="badge-broken">Already broken</span></td>
+      </tr>
+      <tr>
+        <td><strong>Merit-based bureaucratic appointments, end middlemen</strong></td>
+        <td>Said in April 2025: "Middlemen now have access all the way to the leadership's bedrooms." He was General Secretary at the time. Did nothing to stop it.</td>
+        <td><span class="badge-broken">Broken in real time</span></td>
+      </tr>
+      <tr>
+        <td><strong>Clean hands policy, investigate illegal assets</strong></td>
+        <td>CB Lama (NC candidate) is in custody for cooperative fraud. No NC-initiated probe of party-linked cooperatives ever occurred. Sahakari probe demand was dropped for a backroom deal.</td>
+        <td><span class="badge-broken">Contradicted by record</span></td>
+      </tr>
+      <tr>
+        <td><strong>500,000 jobs annually, stop youth migration</strong></td>
+        <td>New promise, no track record. Nepal's youth unemployment has been above 20% across all NC-inclusive governments of the past decade.</td>
+        <td><span class="badge-new">Unproven</span></td>
+      </tr>
+      <tr>
+        <td><strong>Universal healthcare insurance</strong></td>
+        <td>Genuinely initiated Health Insurance Act 2017 as minister — his most substantive real-world achievement. Credit deserved. But implementation has been patchy across subsequent governments.</td>
+        <td><span class="badge-ok">Partial credit</span></td>
+      </tr>
+      <tr>
+        <td><strong>Apology to Gen-Z</strong></td>
+        <td>In the Janakpur Declaration, promised that NC operates under "new management" valuing merit over nepotism. But NC's Home Minister ordered the crackdown. NC co-authored the social media ban. NC candidate is in cooperative fraud custody. He was General Secretary through all of this.</td>
+        <td><span class="badge-broken">Apology, not accountability</span></td>
+      </tr>
+    </table>
+
+    <div class="pull">
+      <blockquote>We changed the Congress, we will change the country. With this very resolve, we are beginning a new journey. We have only one goal — the nation's overall progress.</blockquote>
+      <cite>— Gagan Thapa, January 23, 2026 — the same day he finally got into his own party office after eight days of being locked out by his own colleagues</cite>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER 08 -->
+<div class="chapter" id="ch8">
+  <div class="ch-number">08</div>
+  <div class="ch-tag">March 5, 2026 — The Sarlahi Gamble</div>
+  <h2>ABANDONING <span class="hl">KATHMANDU-4</span>: STRATEGIC BRILLIANCE OR POLITICAL ESCAPE?</h2>
+
+  <div class="verdict disputed">● Disputed — Multiple interpretations</div>
+
+  <div class="ch-body">
+    <p>Perhaps the most revealing decision of Thapa's campaign is the one he frames as his most selfless: instead of contesting from Kathmandu-4, the constituency he won three times in a row (2013, 2017, 2022) — where he is a dominant local figure — Gagan Thapa is contesting the March 5 election from <strong>Sarlahi-4 in Madhesh Province.</strong></p>
+
+    <p>His public justification: he wants to demonstrate that Madhesh is not just a "vote bank" for Kathmandu leaders, and to embed himself in a historically neglected region.</p>
+
+    <p>The analyst's interpretation: Kathmandu has become politically unpredictable after the Gen-Z uprising. The seat that elected him three times now has far more competitive dynamics, an anti-establishment mood, and voters who watched NC's Home Minister order live fire on students. Sarlahi is safer territory. He is also leaving his Kathmandu-4 seat to a close associate — <strong>Sachin Timilsena</strong>, whose distinctive "Sachin Sanga Sambad" phone conversation campaign with voters has drawn significant attention.</p>
+
+    <p>The mathematics are also interesting: with 32 first-past-the-post seats at stake in Madhesh, and nearly 20% of Nepal's total population in the province, it carries outsized electoral weight relative to Kathmandu's more competitive and symbolically fraught urban seats. If Congress hopes to lead a government, Madhesh arithmetic matters more than one safe Kathmandu win.</p>
+
+    <p>What is certain: <strong>Thapa has never previously contested from outside Kathmandu. His Sarlahi-4 decision is a first, and political observers describe it uniformly as a "high-risk strategic gamble."</strong> If he loses there, he has no backup seat. If he wins, the narrative of "democratic sacrifice" is complete. But the cynical reading — that he is abandoning a potentially unwinnable Kathmandu seat for a safer Madhesh constituency while clothing it in the language of regional justice — cannot be dismissed.</p>
+
+    <div class="src">
+      <div class="src-label">Source · Kathmandu Post · January 24, 2026</div>
+      <p>"Thapa is contesting the snap parliamentary election from Sarlahi-4. A rival faction led by the party's immediate past president, Sher Bahadur Deuba, had deployed youths loyal to him and opposed to the new leadership to block the new Congress leadership from entering the party headquarters for several days."</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- end main-col -->
+
+<!-- ===== SIDEBAR ===== -->
+<div class="sidebar">
+
+  <div class="sb-card">
+    <h4>Quick Facts</h4>
+    <div class="kv"><span class="k">Full Name</span><span class="v">Gagan Kumar Thapa</span></div>
+    <div class="kv"><span class="k">Born</span><span class="v">July 19, 1976, Kathmandu</span></div>
+    <div class="kv"><span class="k">Alias</span><span class="v orange">Muttonkaji / Bakhra</span></div>
+    <div class="kv"><span class="k">Party</span><span class="v">NC (Thapa faction)</span></div>
+    <div class="kv"><span class="k">Position</span><span class="v">NC President (Jan 2026)</span></div>
+    <div class="kv"><span class="k">PM Candidate</span><span class="v">March 5, 2026 election</span></div>
+    <div class="kv"><span class="k">Contesting from</span><span class="v gold">Sarlahi-4 (new seat)</span></div>
+    <div class="kv"><span class="k">Previous seat</span><span class="v">Kathmandu-4 (x3)</span></div>
+    <div class="kv"><span class="k">Health Minister</span><span class="v">2016–2017</span></div>
+    <div class="kv"><span class="k">Married</span><span class="v">Anjana KC (daughter of Arjun Narsingh KC)</span></div>
+    <div class="kv"><span class="k">Contempt Case</span><span class="v red">Filed, Supreme Court (Jan 2026)</span></div>
+    <div class="kv"><span class="k">Kicked from NC by Deuba</span><span class="v red">Jan 14, 2026</span></div>
+    <div class="kv"><span class="k">EC recognition</span><span class="v green">Jan 16–17, 2026</span></div>
+  </div>
+
+  <div class="sb-card">
+    <h4>The Muttonkaji Origin</h4>
+    <p class="sb-para">In 2014, Thapa's entity <strong>Sunkhani Ekikrit Krishi Kendra (SEKK)</strong> signed an agreement with the government's PACT project to receive agriculture subsidies for a goat farm in Nuwakot and a meat shop in Golfutar, Kathmandu.</p>
+    <p class="sb-para">Just three days later, Thapa became chairman of the parliamentary committee <strong>overseeing the same PACT project</strong> — a textbook conflict of interest.</p>
+    <p class="sb-para">South Asia Check found that <strong>PACT's own official statement defending Thapa contained factual inaccuracies</strong> contradicted by PACT's own website.</p>
+    <p class="sb-para">The agreement was annulled on July 24, 2017 — <strong>35 months after it was signed</strong>, and 19 months after Thapa's own cancellation request.</p>
+  </div>
+
+  <div class="sb-card">
+    <h4>Allegations Scorecard</h4>
+    <div class="kv"><span class="k">Tri-Chandra park Rs 30L</span><span class="v red">Alleged, Parliament</span></div>
+    <div class="kv"><span class="k">PACT/SEKK conflict</span><span class="v red">Documented, disputed</span></div>
+    <div class="kv"><span class="k">BP Academy VC Rs 14Cr</span><span class="v red">Alleged, Parliament</span></div>
+    <div class="kv"><span class="k">Selling secrets</span><span class="v gold">Alleged, unverified</span></div>
+    <div class="kv"><span class="k">CIAA targeting (Basnet)</span><span class="v red">Alleged by NC colleague</span></div>
+    <div class="kv"><span class="k">Contempt of Court</span><span class="v red">Case filed, SC</span></div>
+    <div class="kv"><span class="k">Sahakari probe drop</span><span class="v red">Confirmed pattern</span></div>
+    <div class="kv"><span class="k">VIP medical cap breach</span><span class="v red">Confirmed (2016)</span></div>
+    <p class="sb-para" style="margin-top:1rem;"><em>None of the personal allegations above have resulted in formal criminal charges against Thapa as of Feb 2026.</em></p>
+  </div>
+
+  <div class="sb-card">
+    <h4>The NC Cooperative Nexus</h4>
+    <p class="sb-para"><strong>CB Lama</strong> — former NC candidate — in custody for cooperative fraud involving <strong>billions of rupees</strong> (Kantipur Savings & Credit Cooperative).</p>
+    <p class="sb-para">NC parliamentary obstructions over cooperative scam probe were dropped after a deal was struck to remove Lamichhane's name from the probe Terms of Reference.</p>
+    <p class="sb-para">The probe committee, when eventually formed, focused on RSP-linked cooperatives — not NC-linked ones.</p>
+  </div>
+
+  <div class="sb-card">
+    <h4>Broken Chronology</h4>
+    <div class="kv"><span class="k">2014</span><span class="v red">PACT conflict of interest</span></div>
+    <div class="kv"><span class="k">2016</span><span class="v red">VIP medical cap breached</span></div>
+    <div class="kv"><span class="k">2016–17</span><span class="v red">VC appointment politicised</span></div>
+    <div class="kv"><span class="k">2024 May</span><span class="v red">Parliament accusations by Lamichhane</span></div>
+    <div class="kv"><span class="k">2024 May</span><span class="v red">Sahakari probe demands dropped</span></div>
+    <div class="kv"><span class="k">2025 Apr</span><span class="v red">"Middlemen in bedrooms" speech</span></div>
+    <div class="kv"><span class="k">2025 Sep</span><span class="v red">NC co-triggers Gen-Z crisis</span></div>
+    <div class="kv"><span class="k">2026 Jan 14</span><span class="v red">Expelled by Deuba</span></div>
+    <div class="kv"><span class="k">2026 Jan 15</span><span class="v gold">Elected NC President</span></div>
+    <div class="kv"><span class="k">2026 Jan 16</span><span class="v green">EC recognition</span></div>
+    <div class="kv"><span class="k">2026 Jan 23</span><span class="v red">Enters office 8 days late</span></div>
+    <div class="kv"><span class="k">2026 Jan 24</span><span class="v red">Admits democratic reform skipped</span></div>
+    <div class="kv"><span class="k">2026 Feb 18</span><span class="v gold">Janakpur Declaration</span></div>
+    <div class="kv"><span class="k">2026 Mar 5</span><span class="v gold">Election from Sarlahi-4</span></div>
+  </div>
+
+</div><!-- end sidebar -->
+
+</main>
+
+<nav class="subpage-footer">
+  <span><i class="fa-solid fa-ram"></i> <a href="index.html">MuttonKaji | Congress 0.2</a> &copy; 2082 BS MuttonKaji Contributors</span>
+  <span>Sources: Kathmandu Post &middot; Nepali Times &middot; OnlineKhabar &middot; South Asia Check &middot; Setopati</span>
+  <span>
+    <a href="deuba-genz-accountability.html">Deuba</a> &middot;
+    <a href="arzu-rana-deuba.html">Arzu</a> &middot;
+    <a href="gachhadar-report.html">Gachhadar</a> &middot;
+    <a href="gagan-thapa-expose.html">Gagan Thapa</a>
+  </span>
+</nav>
+</body>
+</html>
